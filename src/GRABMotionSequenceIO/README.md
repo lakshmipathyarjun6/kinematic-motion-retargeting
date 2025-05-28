@@ -4,7 +4,7 @@ This plugin imports data from the <a href="https://grab.is.tue.mpg.de/">GRAB dat
 
 ## Getting started
 
-First, download the GRAB dataset. Please note that we do not own the rights to this dataset and are unable to host any original content. By downloading this dataset, you agree to all the terms and conditions set forth by GRAB's license.
+Download the dataset to get started. Please note that we do not own the rights to this dataset and are unable to host any original content. By downloading this dataset, you agree to all the terms and conditions set forth by GRAB's license.
 
 You will also need to download (and agree to the terms and conditions of) the MANO hand model, which is available <a href="https://mano.is.tue.mpg.de/">here</a>.
 

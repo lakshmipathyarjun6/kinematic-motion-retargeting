@@ -2,7 +2,7 @@
 
 <TODO: Put image here>
 
-Code for paper https://dl.acm.org/doi/10.1145/3723872
+Code for <a href="https://dl.acm.org/doi/10.1145/3723872">paper</a>
 
 ## Introduction
 
@@ -12,7 +12,7 @@ For those who are only looking to download complete results for baseline compari
 
 ## Why on earth are you using Maya instead of literally anything else (e.g. Blender, Open3d, \<insert favorite Python visualizer\>)?
 
-Because I had to familiarize myself with it during the development of this paper: https://dl.acm.org/doi/10.1145/3592117. Yes, I realize Maya is closed source. Yes, I realize Maya is cumbersome to build on Linux distributions and has some problems. But it does have a rather nice UI and, more importantly, a well documented C++ developer API [https://help.autodesk.com/view/MAYAUL/2024/ENU/?guid=MAYA_API_REF_cpp_ref_group_open_maya_html]. As the sole developer of this work, I opted to use what was most useful and convenient for my research needs. However, I am more than happy to provide guidance if someone is interested in porting this code to Blender or a Python package. But I personally do not have the bandwidth to do so.
+Because I had to familiarize myself with it during the development of <a href="https://dl.acm.org/doi/10.1145/3592117">this paper</a>. Yes, I realize Maya is closed source. Yes, I realize Maya is cumbersome to build on Linux distributions and has some problems. But it does have a rather nice UI and, more importantly, a well documented <a href="https://help.autodesk.com/view/MAYAUL/2024/ENU/?guid=MAYA_API_REF_cpp_ref_group_open_maya_html">C++ developer API</a>. As the sole developer of this work, I opted to use what was most useful and convenient for my research needs. However, I am more than happy to provide guidance if someone is interested in porting this code to Blender or a Python package. But I personally do not have the bandwidth to do so.
 
 ## Installation
 
@@ -20,7 +20,7 @@ You will first need to download and install Autodesk Maya, as well as obtain a v
 
 If you do not already have CMake installed, please do so as well. You will also need OpenGL, but this should typically come installed on most systems.
 
-Next, install Eigen[ref] and Zlib[ref]. The easiest way to do so is via a package manager (Hombrew on Mac, apt on Linux, Chocolatey or similar on Windows).
+Next, install <a href="https://eigen.tuxfamily.org/dox/">Eigen</a> and <a href="https://github.com/madler/zlib">Zlib</a>. The easiest way to do so is via a package manager (Hombrew on Mac, apt on Linux, Chocolatey or similar on Windows).
 
 Next, clone this repository *recursively* to make sure all dependency submodules are fetched:
 
@@ -83,7 +83,7 @@ Select "Auto load" as well as "Loaded" on all the plugins. Make sure there are n
 
 If you wish to edit the code of any existing plugin, please note that Maya (to the best of my knowledge) does *not* support hot-reloading. In other words, to test new code / edits, the process is save edits -> re-compile the CMake project (make -j5 in the build folder) -> restart Maya.
 
-The plugins for this project are all built as IO plugins or Edit Context plugins. If you are generally interested in building new plugins, either in conjunction with this repository or in a separate project, I would highly recommend this series: <https://www.cgcircuit.com/course/introduction-to-the-maya-api>. I consistently referred to it when building Maya projects - please consider supporting this creator (smile).
+The plugins for this project are all built as IO plugins or Edit Context plugins. If you are generally interested in building new plugins, either in conjunction with this repository or in a separate project, I would highly recommend <a href="https://www.cgcircuit.com/course/introduction-to-the-maya-api">this video series</a>. I consistently referred to it when building Maya projects - please consider supporting this creator :smile:.
 
 By default, Maya's world space is configured to use *centimeters* for distances, degrees for angles, and a Z-Up ground plane configuration. You can modify any of these via Windows >> Settings/Preferences >> Preferences >> Settings. These settings will be saved between restarts and only adjust the settings of the active UI. You may access information in any convention via the API.
 
@@ -101,6 +101,6 @@ Please see the README in each sub-folder for an overview of how to use each plug
 
 ## Creating Manifold Wrappers for Articulated Hands
 
-While there are plenty of great tutorials online for creating skinned character rigs (e.g. https://www.youtube.com/watch?v=c538zkwxgTQ, https://www.youtube.com/watch?v=rAZpH3m7K5U&list=PLbvsJz5ZcmxHEPiw_kF3vHjR023rIjR05), I've generally found there to be little guidance online for dealing with articulated hands. Articulated hands stored as URDFs, for example, are commonly used in robotics; however, approximating such hands with smooth, continuous, manifold wrappers is often desirable to abstract away high-resolution geometric details and make the model "play nicely" with many algorithms in geometry processing, simulation, and animation, including the methods in this paper.
+While there are plenty of great tutorials online for creating skinned character rigs (e.g. <a href="https://www.youtube.com/watch?v=c538zkwxgTQ">this</a> or <a href="https://www.youtube.com/watch?v=rAZpH3m7K5U&list=PLbvsJz5ZcmxHEPiw_kF3vHjR023rIjR05">this</a>), I've generally found there to be little guidance online for dealing with articulated hands. Articulated hands stored as URDFs, for example, are commonly used in robotics; however, approximating such hands with smooth, continuous, manifold wrappers is often desirable to abstract away high-resolution geometric details and make the model "play nicely" with many algorithms in geometry processing, simulation, and animation, including the methods in this paper.
 
 I have therefore created this companion video [TODO: create video] to show one way to do this. Please watch it if you are trying to use this codebase with a new articulated robot hand. The remainder of the codebase will assume that your hand is manifold and has already been rigged and skinned. 

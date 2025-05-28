@@ -1,0 +1,48 @@
+global proc contactTransferEditContextProperties()
+{
+    string $parent = `toolPropertyWindow -q -location`;
+    setParent $parent;
+
+    setUITemplate -pushTemplate OptionsTemplate;
+
+    columnLayout contactTransferEditContext;
+        frameLayout -collapsable true -collapse false
+            -label "Transfer Options";
+
+            columnLayout;
+                separator -style "none";
+
+                intFieldGrp -label "Jump to Frame" -numberOfFields 1
+                    -value1 0 -enable1 true FrameJumpField;
+
+                intFieldGrp -label "Keyframe Start, End" -numberOfFields 2
+                    -value1 1 -enable1 true -value2 1 -enable2 true FrameRangeField;
+
+                button -label "Transfer Contacts in Frame" TransferContactsButton;
+
+                button -label "Transfer Contacts in Range" TransferContactsBulkButton;
+
+            setParent ..;
+        setParent ..;
+
+        frameLayout -collapsable true -collapse false
+            -label "Cleaning Options";
+
+            columnLayout;
+                separator -style "none";
+
+                button -label "Dump Parameterized Distances to File" DumpParameterizedDistancesButton;
+
+                floatSliderGrp -label "Filter Distance" -field true
+                    -minValue 0.1 -maxValue 30.0
+                    -fieldMinValue 0.1 -fieldMaxValue 30.0
+                    -value 2.0 FilterDistanceField;
+
+                button -label "Commit Filter" CommitParameterizedDistancesFilterButton;
+
+            setParent ..;
+        setParent ..;
+    setParent ..;
+
+    setUITemplate -popTemplate;
+}

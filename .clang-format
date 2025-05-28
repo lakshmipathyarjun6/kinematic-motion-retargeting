@@ -1,0 +1,9 @@
+---
+BasedOnStyle: LLVM
+AccessModifierOffset: '-4'
+BreakBeforeBraces: Allman
+IndentWidth: '4'
+NamespaceIndentation: All
+TabWidth: '4'
+
+...

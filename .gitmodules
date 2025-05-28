@@ -1,0 +1,9 @@
+[submodule "deps/nlopt"]
+	path = deps/nlopt
+	url = https://github.com/lakshmipathyarjun6/nlopt
+[submodule "deps/geometry-central"]
+	path = deps/geometry-central
+	url = git@github.com:lakshmipathyarjun6/geometry-central.git
+[submodule "deps/fcpw"]
+	path = deps/fcpw
+	url = https://github.com/lakshmipathyarjun6/fcpw

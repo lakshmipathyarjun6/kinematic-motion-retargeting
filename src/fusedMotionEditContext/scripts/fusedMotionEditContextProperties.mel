@@ -1,0 +1,119 @@
+global proc fusedMotionEditContextProperties()
+{
+    string $parent = `toolPropertyWindow -q -location`;
+    setParent $parent;
+
+    setUITemplate -pushTemplate OptionsTemplate;
+
+    columnLayout fusedMotionEditContext;
+        frameLayout -collapsable true -collapse false
+            -label "Animation";
+
+            columnLayout;
+                separator -style "none";
+
+                intFieldGrp -label "Jump to Frame" -numberOfFields 1
+                    -value1 0 -enable1 true FrameJumpField;
+
+                intFieldGrp -label "Frame Start, End" -numberOfFields 2
+                    -value1 1 -enable1 true -value2 1 -enable2 true FrameRangeField;
+
+                checkBoxGrp -label "Save Keys Only" SaveKeysOnlyBox;
+
+                button -label "Save Current Rig Keyframe" KeyframeRigButton;
+
+                button -label "Compute Keyframes in Range" KeyframeRigBulkButton;
+
+                button -label "Wipe Rig Keyframes in Range" WipeRigKeyframeButton;
+
+                button -label "Finalize Omission Indices" FinalizeOmissionIndicesButton;
+
+            setParent ..;
+        setParent ..;
+
+        frameLayout -collapsable true -collapse false
+            -label "Contact Optimization Settings";
+
+            columnLayout;
+                separator -style "none";
+
+                floatSliderGrp -label "Opt: Distance Weight" -field true
+                    -minValue 0.0 -maxValue 10.0
+                    -fieldMinValue 0.0 -fieldMaxValue 10.0
+                    -value 1.0 ContactOptDistancePenaltyCoefficientField;
+
+                floatSliderGrp -label "Opt: Normal Weight" -field true
+                    -minValue 0.0 -maxValue 10.0
+                    -fieldMinValue 0.0 -fieldMaxValue 10.0
+                    -value 1.0 ContactOptNormalPenaltyCoefficientField;
+
+            setParent ..;
+        setParent ..;
+
+        frameLayout -collapsable true -collapse false
+            -label "Fused Optimization Settings";
+
+            columnLayout;
+                separator -style "none";
+
+                floatSliderGrp -label "Opt: Marker Weight" -field true
+                    -minValue 0.0 -maxValue 10.0
+                    -fieldMinValue 0.0 -fieldMaxValue 10.0
+                    -value 1.0 OptMarkerPenaltyCoefficientField;
+
+                floatSliderGrp -label "Opt: Contact Weight" -field true
+                    -minValue 0.0 -maxValue 10.0
+                    -fieldMinValue 0.0 -fieldMaxValue 10.0
+                    -value 1.0 OptContactPenaltyCoefficientField;
+
+                floatSliderGrp -label "Opt: Intersection Weight" -field true
+                    -minValue 0.0 -maxValue 10.0
+                    -fieldMinValue 0.0 -fieldMaxValue 10.0
+                    -value 1.0 OptIntersectionPenaltyCoefficientField;
+
+                floatSliderGrp -label "Opt: Prior Weight" -field true
+                    -minValue 0.0 -maxValue 100.0
+                    -fieldMinValue 0.0 -fieldMaxValue 100.0
+                    -value 50.0 OptPriorPenaltyCoefficientField;
+
+                intSliderGrp -label "Opt: # Iterations" -field true
+                    -minValue 1 -maxValue 1000
+                    -fieldMinValue 1 -fieldMaxValue 1000
+                    -value 100 OptNumIterationsField;
+
+                checkBoxGrp -label "Visualize Progress" VisualizeProgressBox;
+
+                button -label "Reset Non-Root Joints" ResetJointsButton;
+
+                button -label "Undo Optimization" UndoOptimizationButton;
+
+            setParent ..;
+        setParent ..;
+
+        frameLayout -collapsable true -collapse false
+            -label "Refinement";
+
+            columnLayout;
+
+                floatSliderGrp -label "Accel. Epsilon" -field true
+                    -minValue 1.0 -maxValue 10000.0
+                    -fieldMinValue 1.0 -fieldMaxValue 10000.0
+                    -value 500.0 AccelerationEpsilonField;
+
+                intSliderGrp -label "Max Iterations" -field true
+                    -minValue 1 -maxValue 100
+                    -fieldMinValue 1 -fieldMaxValue 100
+                    -value 20 AccelerationResolutionIterationsField;
+
+                button -label "Compute Acceleration Errors" ComputeAccelerationErrorsButton;
+
+                button -label "Resolve Threshold Error Frames" ResolveAccelerationErrorsButton;
+
+                button -label "Store Error Frames" StoreErrorsButton;
+
+            setParent ..;
+        setParent ..;
+    setParent ..;
+
+    setUITemplate -popTemplate;
+}

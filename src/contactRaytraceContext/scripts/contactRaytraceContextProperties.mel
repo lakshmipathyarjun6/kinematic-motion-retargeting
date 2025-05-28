@@ -1,0 +1,39 @@
+global proc contactRaytraceContextProperties()
+{
+    string $parent = `toolPropertyWindow -q -location`;
+    setParent $parent;
+
+    setUITemplate -pushTemplate OptionsTemplate;
+
+    columnLayout contactRaytraceContext;
+        frameLayout -collapsable true -collapse false
+            -label "Raytrace Options";
+
+            columnLayout;
+                separator -style "none";
+
+                intFieldGrp -label "Jump to Frame" -numberOfFields 1
+                    -value1 0 -enable1 true FrameJumpField;
+
+                button -label "Raytrace Contacts" RaytraceContactsButton;
+
+                intFieldGrp -label "Keyframe Start, End, Inc." -numberOfFields 3
+                    -value1 1 -enable1 true -value2 1 -enable2 true FrameRangeField;
+
+                button -label "Raytrace All Keyframes in Range" RaytraceContactsBulkButton;
+
+                button -label "Dump Distances to File" DumpContactDistancesButton;
+
+                floatSliderGrp -label "Cutoff Distance" -field true
+                    -minValue 0.0 -maxValue 10.0
+                    -fieldMinValue 0.0 -fieldMaxValue 10.0
+                    -value 1.0 CutoffDistanceField;
+                
+                button -label "Purge Pairings Above Cutoff" PurgeContactsButton;
+
+            setParent ..;
+        setParent ..;
+    setParent ..;
+
+    setUITemplate -popTemplate;
+}

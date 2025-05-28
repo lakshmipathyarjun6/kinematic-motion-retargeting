@@ -1,0 +1,60 @@
+global proc contactRaytraceContextValues( string $toolName )
+{
+    string $parent = (`toolPropertyWindow -q -location`);
+    setParent $parent;
+
+    intFieldGrp -e
+        -changeCommand ("jumpToFrame " + $toolName)
+        FrameJumpField;
+
+    button -e
+        -command ("raytraceContacts " + $toolName)
+        RaytraceContactsButton;
+
+    button -e
+        -command ("raytraceContactsBulk " + $toolName)
+        RaytraceContactsBulkButton;
+
+    button -e
+        -command ("dumpContactDistances " + $toolName)
+        DumpContactDistancesButton;
+
+    button -e
+        -command ("purgeContacts " + $toolName)
+        PurgeContactsButton;
+
+    toolPropertySelect "contactRaytraceContext";
+}
+
+global proc dumpContactDistances( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    contactRaytraceContext -e -dumpcontactdistances $frameStart $frameEnd $toolName;
+}
+
+global proc jumpToFrame( string $toolName )
+{
+    int $jumpFrame = `intFieldGrp -q -v1 FrameJumpField`;
+    contactRaytraceContext -e -jump $jumpFrame $toolName;
+}
+
+global proc purgeContacts( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    float $cutoffDistance = `floatSliderGrp -q -v CutoffDistanceField`;
+    contactRaytraceContext -e -purgecontacts $frameStart $frameEnd $cutoffDistance $toolName;
+}
+
+global proc raytraceContacts( string $toolName )
+{
+    contactRaytraceContext -e -raytracecontacts $toolName;
+}
+
+global proc raytraceContactsBulk( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    contactRaytraceContext -e -bulkraytracecontacts $frameStart $frameEnd $toolName;
+}

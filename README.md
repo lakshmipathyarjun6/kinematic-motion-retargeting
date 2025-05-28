@@ -92,15 +92,15 @@ By default, Maya's world space is configured to use *centimeters* for distances,
 
 ## Processing New Hands and Motion Data
 
-The general "flow of plugins" to use when preparing a new hand for retargeting is:
+The general "flow of primary plugins" to use when preparing a new hand for retargeting is:
 
-markerCalibrationContext -> contactAxisCalibrationContext -> contactTransferEditContext
+<a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/markerCalibrationContext">markerCalibrationContext</a> -> contactAxisCalibrationContext -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a>
 
 And for importing a new motion and generating a retargeted sequence:
 
-<a target="_blank" href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/GRABMotionSequenceIO">GRABMotionSequenceIO</a> -> contactRaytraceContext -> fusedMotionEditContext -> smoothMotionEditContext
+<a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/GRABMotionSequenceIO">GRABMotionSequenceIO</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactRaytraceContext">contactRaytraceContext</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/fusedMotionEditContext">fusedMotionEditContext</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/smoothMotionEditContext">smoothMotionEditContext</a>
 
-Please see the README in each sub-folder for an overview of how to use each plugin. There are also a number of "auxiliary" plugins included to help with importing / exporting data which will be pointed to from each of the aformentioned "primary" plugins.
+Please see the README in each sub-folder for an overview of how to use each plugin. There are also a number of auxiliary plugins included to help with importing / exporting data.
 
 ## Creating Manifold Wrappers for Articulated Hands
 

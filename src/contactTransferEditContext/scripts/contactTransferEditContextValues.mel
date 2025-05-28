@@ -1,0 +1,70 @@
+global proc contactTransferEditContextValues( string $toolName )
+{
+    string $parent = (`toolPropertyWindow -q -location`);
+    setParent $parent;
+
+    intFieldGrp -e
+        -changeCommand ("jumpToFrame " + $toolName)
+        FrameJumpField;
+
+    button -e
+        -command ("transferContacts " + $toolName)
+        TransferContactsButton;
+
+    button -e
+        -command ("transferContactsBulk " + $toolName)
+        TransferContactsBulkButton;
+
+    button -e
+        -command ("dumpParameterizedDistances " + $toolName)
+        DumpParameterizedDistancesButton;
+
+    floatSliderGrp -e
+        -changeCommand ("setParameterizedFilterDistance " + $toolName)
+        FilterDistanceField;
+
+    button -e
+        -command ("commitParameterizedDistancesFilter " + $toolName)
+        CommitParameterizedDistancesFilterButton;
+
+    toolPropertySelect "contactTransferEditContext";
+}
+
+global proc commitParameterizedDistancesFilter( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    float $parameterizedFilterDistanceThreshold = `floatSliderGrp -q -v FilterDistanceField`;
+    contactTransferEditContext -e -commitparameterizeddistances $frameStart $frameEnd $parameterizedFilterDistanceThreshold $toolName;
+}
+
+global proc dumpParameterizedDistances( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    contactTransferEditContext -e -dumpparameterizeddistances $frameStart $frameEnd $toolName;
+}
+
+global proc jumpToFrame( string $toolName )
+{
+    int $jumpFrame = `intFieldGrp -q -v1 FrameJumpField`;
+    contactTransferEditContext -e -jump $jumpFrame $toolName;
+}
+
+global proc setParameterizedFilterDistance( string $toolName )
+{
+    float $parameterizedFilterDistanceThreshold = `floatSliderGrp -q -v FilterDistanceField`;
+    contactTransferEditContext -e -parameterizedfilterdistance $parameterizedFilterDistanceThreshold $toolName;
+}
+
+global proc transferContacts( string $toolName )
+{
+    contactTransferEditContext -e -transfercontacts $toolName;
+}
+
+global proc transferContactsBulk( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    contactTransferEditContext -e -bulktransfercontacts $frameStart $frameEnd $toolName;
+}

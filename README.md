@@ -1,5 +1,7 @@
 # Kinematic Motion Retargeting for Contact-Rich Anthropomorphic Manipulations 
 
+<TODO: Put image here>
+
 Code for paper https://dl.acm.org/doi/10.1145/3723872
 
 # Introduction
@@ -14,7 +16,7 @@ Because I had to familiarize myself with it during the development of this paper
 
 # Installation
 
-You will first need to download and install Autodesk Maya with a valid license key.
+You will first need to download and install Autodesk Maya, as well as obtain a valid license key.
 
 If you do not already have CMake installed, please do so as well.
 
@@ -27,7 +29,7 @@ git clone --recursive https://github.com/lakshmipathyarjun6/kinematic_motion_ret
 cd kinematic_motion_retargeting/
 ```
 
-You will then need to change the Maya version in the CMake file [here] to whatever year / version of Maya you installed on your machine. The default CMake file assumes 2025. This code should be foward and backwards compatible by at least a few years, but please let me know if you encounter problems with your version so I can flag the earliest / latest compatible versions.
+Before building, change the Maya version in the CMake file [here] to whatever year / version of Maya you installed on your machine. The default CMake file assumes 2024. This code should be foward and backwards compatible by at least a few years, but please let me know if you encounter problems with your version so I can flag the earliest / latest compatible versions.
 
 You can now build the CMake project:
 
@@ -40,3 +42,65 @@ make -j5
 
 If successfull, you should see a number of dynamic libraries (.bundle on Mac, .dylib on Windows, .so on Linux) generated in the build folder.
 
+The final step is to make the plugins visible to Maya. While you can load them individually on Maya startup, this is cumbersome. Instead, I suggest pointing your Maya environment path to the build folder location. To do so, navigate to the following location:
+
+Mac:
+```
+cd ~/Library/Preferences/Autodesk/maya/<year>/
+```
+
+Linux:
+```
+TODO
+```
+
+Windows:
+```
+TODO
+```
+
+And add the following line to the Maya.env file in that location:
+
+```
+MAYA_PLUG_IN_PATH=/path/to/project/kinematic_motion_retargeting/build
+```
+
+This line will instruct Maya to automatically make all plugins in the build folder visible on startup.
+
+# Maya Setup
+
+I strongly recommend starting Maya via command line instead of the Desktop shortuct. This will make debugging / print statements visible in the console.
+
+Once Maya starts up, either in a new or existing scene, navigate to Windows >> Settings/Preferences >> Plug-In Manager in the main navigation bar:
+
+<TODO: Put image here>
+
+If you set your Maya.env file to point to your build folder, all the plugins should be visible:
+
+<TODO: Put image here>
+
+Select "Auto load" as well as "Loaded" on all the plugins. Make sure there are no errors, then save the current scene (you can delete it afterward) and restart Maya. The plugins should now automatically be loaded whenever Maya is started.
+
+If you wish to edit the code of any existing plugin, please note that Maya (to the best of my knowledge) does *not* support hot-reloading. In other words, to test new code / edits, the process is save edits -> re-compile the CMake project (make -j5 in the build folder) -> restart Maya.
+
+The plugins for this project are all built as IO plugins or Edit Context plugins. If you are generally interested in building new plugins, either in conjunction with this repository or in a separate project, I would highly recommend this series: <https://www.cgcircuit.com/course/introduction-to-the-maya-api>. I consistently referred to it when building Maya projects - please consider supporting this creator (smile).
+
+By default, Maya's world space is configured to use *centimeters* for distances, degrees for angles, and a Z-Up ground plane configuration. You can modify any of these via Windows >> Settings/Preferences >> Preferences >> Settings. These settings will be saved between restarts and only adjust the settings of the active UI. You may access information in any convention via the API.
+
+# Processing New Hands and Motion Data
+
+The general "flow of plugins" to use when preparing a new hand for retargeting is:
+
+markerCalibrationContext -> contactAxisCalibrationContext -> contactTransferEditContext
+
+And for importing a new motion and generating a retargeted sequence:
+
+GRABMotionSequenceIO -> contactRaytraceContext -> fusedMotionEditContext -> smoothMotionEditContext
+
+Please see the README in each sub-folder for an overview of how to use each plugin. There are also a number of "auxiliary" plugins included to help with importing / exporting data which will be pointed to from each of the aformentioned "primary" plugins.
+
+# Creating Manifold Wrappers for Articulated Hands
+
+While there are plenty of great tutorials online for creating skinned character rigs (e.g. https://www.youtube.com/watch?v=c538zkwxgTQ, https://www.youtube.com/watch?v=rAZpH3m7K5U&list=PLbvsJz5ZcmxHEPiw_kF3vHjR023rIjR05), I've generally found there to be little guidance online for dealing with articulated hands. Articulated hands stored as URDFs, for example, are commonly used in robotics; however, approximating such hands with smooth, continuous, manifold wrappers is often desirable to abstract away high-resolution geometric details and make the model "play nicely" with many algorithms in geometry processing, simulation, and animation, including the methods in this paper.
+
+I have therefore created this companion video [TODO: create video] to show one way to do this. Please watch it if you are trying to use this codebase with a new articulated robot hand. The remainder of the codebase will assume that your hand is manifold and has already been rigged and skinned. 

@@ -41,7 +41,7 @@ cmake ..
 make -j5
 ```
 
-If successfull, you should see a number of dynamic libraries (.bundle on Mac, .dylib on Windows, .so on Linux) generated in the build folder.
+If successfull, you should see a number of dynamic libraries (.bundle on Mac, .mll on Windows, .so on Linux) generated in the build folder.
 
 The final step is to make the plugins visible to Maya. While you can load them individually on Maya startup, this is cumbersome. Instead, I suggest pointing your Maya environment path to the build folder location. To do so, navigate to the following location:
 

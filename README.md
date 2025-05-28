@@ -1,6 +1,7 @@
-# Kinematic Motion Retargeting for Contact-Rich Anthropomorphic Manipulations 
-
-<TODO: Put image here>
+<p align="center">
+<img src="images/KinematicMotionRetargetingTOG25.jpg" height="200">
+</p>
+<h1 align="center"><em>Kinematic Motion Retargeting for Contact-Rich Anthropomorphic Manipulations </em></h1>
 
 Code for <a href="https://dl.acm.org/doi/10.1145/3723872">paper</a>
 
@@ -73,7 +74,9 @@ I strongly recommend starting Maya via command line instead of the Desktop short
 
 Once Maya starts up, either in a new or existing scene, navigate to Windows >> Settings/Preferences >> Plug-In Manager in the main navigation bar:
 
-<TODO: Put image here>
+<p align="center">
+<img src="images/pluginswindow.png">
+</p>
 
 If you set your Maya.env file to point to your build folder, all the plugins should be visible:
 

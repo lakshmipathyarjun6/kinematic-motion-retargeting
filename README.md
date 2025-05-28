@@ -18,9 +18,9 @@ Because I had to familiarize myself with it during the development of this paper
 
 You will first need to download and install Autodesk Maya, as well as obtain a valid license key.
 
-If you do not already have CMake installed, please do so as well.
+If you do not already have CMake installed, please do so as well. You will also need OpenGL, but this should typically come installed on most systems.
 
-Next, install Eigen[ref]. The easiest way to do so is via a package manager (Hombrew on Mac, apt on Linux, Chocolatey or similar on Windows).
+Next, install Eigen[ref] and Zlib[ref]. The easiest way to do so is via a package manager (Hombrew on Mac, apt on Linux, Chocolatey or similar on Windows).
 
 Next, clone this repository *recursively* to make sure all dependency submodules are fetched:
 

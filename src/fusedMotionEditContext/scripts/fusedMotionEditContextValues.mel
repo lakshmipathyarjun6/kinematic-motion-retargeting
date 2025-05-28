@@ -1,0 +1,202 @@
+global proc fusedMotionEditContextValues( string $toolName )
+{
+    string $parent = (`toolPropertyWindow -q -location`);
+    setParent $parent;
+
+    floatSliderGrp -e
+        -changeCommand ("setContactOptimizationDistanceCoefficient " + $toolName)
+        ContactOptDistancePenaltyCoefficientField;
+
+    floatSliderGrp -e
+        -changeCommand ("setContactOptimizationNormalCoefficient " + $toolName)
+        ContactOptNormalPenaltyCoefficientField;
+
+    floatSliderGrp -e
+        -changeCommand ("setOptimizationMarkerCoefficient " + $toolName)
+        OptMarkerPenaltyCoefficientField;
+
+    floatSliderGrp -e
+        -changeCommand ("setOptimizationContactCoefficient " + $toolName)
+        OptContactPenaltyCoefficientField;
+
+    floatSliderGrp -e
+        -changeCommand ("setOptimizationIntersectionCoefficient " + $toolName)
+        OptIntersectionPenaltyCoefficientField;
+
+    floatSliderGrp -e
+        -changeCommand ("setOptimizationPriorCoefficient " + $toolName)
+        OptPriorPenaltyCoefficientField;
+
+    intSliderGrp -e
+        -changeCommand ("setOptimizationIterations " + $toolName)
+        OptNumIterationsField;
+
+    checkBoxGrp -e
+        -offCommand ("updateOptimizationVisualizationProgressSelection " + $toolName + " " + 0)
+        -onCommand ("updateOptimizationVisualizationProgressSelection " + $toolName + " " + 1)
+        VisualizeProgressBox;
+
+    button -e
+        -command ("resetJoints " + $toolName)
+        ResetJointsButton;
+
+    button -e
+        -command ("undoOptimization " + $toolName)
+        UndoOptimizationButton;
+
+    intFieldGrp -e
+        -changeCommand ("jumpToFrame " + $toolName)
+        FrameJumpField;
+
+    button -e
+        -command ("keyframeRig " + $toolName)
+        KeyframeRigButton;
+
+    button -e
+        -command ("keyframeRigBulk " + $toolName)
+        KeyframeRigBulkButton;
+
+    button -e
+        -command ("wipeRigKeyframe " + $toolName)
+        WipeRigKeyframeButton;
+
+    button -e
+        -command ("finalizeOmissionIndices " + $toolName)
+        FinalizeOmissionIndicesButton;
+
+    button -e
+        -command ("computeAccelerationErrors " + $toolName)
+        ComputeAccelerationErrorsButton;
+
+    floatSliderGrp -e
+        -changeCommand ("setAccelerationEpsilon " + $toolName)
+        AccelerationEpsilonField;
+
+    button -e
+        -command ("resolveAccelerationErrors " + $toolName)
+        ResolveAccelerationErrorsButton;
+
+    button -e
+        -command ("storeAccelerationErrors " + $toolName)
+        StoreErrorsButton;
+
+    toolPropertySelect "fusedMotionEditContext";
+}
+
+global proc setContactOptimizationDistanceCoefficient( string $toolName )
+{
+    float $distanceCoefficient = `floatSliderGrp -q -v ContactOptDistancePenaltyCoefficientField`;
+    fusedMotionEditContext -e -cdpenalty $distanceCoefficient $toolName;
+}
+
+global proc setContactOptimizationNormalCoefficient( string $toolName )
+{
+    float $normalCoefficient = `floatSliderGrp -q -v ContactOptNormalPenaltyCoefficientField`;
+    fusedMotionEditContext -e -cnpenalty $normalCoefficient $toolName;
+}
+
+global proc setOptimizationMarkerCoefficient( string $toolName )
+{
+    float $markerCoefficient = `floatSliderGrp -q -v OptMarkerPenaltyCoefficientField`;
+    fusedMotionEditContext -e -mmpenalty $markerCoefficient $toolName;
+}
+
+global proc setOptimizationContactCoefficient( string $toolName )
+{
+    float $contactCoefficient = `floatSliderGrp -q -v OptContactPenaltyCoefficientField`;
+    fusedMotionEditContext -e -cmpenalty $contactCoefficient $toolName;
+}
+
+global proc setOptimizationIntersectionCoefficient( string $toolName )
+{
+    float $IntersectionCoefficient = `floatSliderGrp -q -v OptIntersectionPenaltyCoefficientField`;
+    fusedMotionEditContext -e -ipenalty $IntersectionCoefficient $toolName;
+}
+
+global proc setOptimizationPriorCoefficient( string $toolName )
+{
+    float $priorCoefficient = `floatSliderGrp -q -v OptPriorPenaltyCoefficientField`;
+    fusedMotionEditContext -e -ppenalty $priorCoefficient $toolName;
+}
+
+global proc setOptimizationIterations( string $toolName )
+{
+    int $numIterations = `intSliderGrp -q -v OptNumIterationsField`;
+    fusedMotionEditContext -e -numiterations $numIterations $toolName;
+}
+
+global proc updateOptimizationVisualizationProgressSelection( string $toolName, int $enable )
+{
+    fusedMotionEditContext -e -progvisenabled $enable $toolName;
+}
+
+global proc resetJoints( string $toolName )
+{
+    fusedMotionEditContext -e -resetjoints $toolName;
+}
+
+global proc undoOptimization( string $toolName )
+{
+    fusedMotionEditContext -e -undoopt $toolName;
+}
+
+global proc jumpToFrame( string $toolName )
+{
+    int $jumpFrame = `intFieldGrp -q -v1 FrameJumpField`;
+    fusedMotionEditContext -e -jump $jumpFrame $toolName;
+}
+
+global proc keyframeRig( string $toolName )
+{
+    fusedMotionEditContext -e -keyframerig $toolName;
+}
+
+global proc keyframeRigBulk( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    int $saveKeyOnly = `checkBoxGrp -q -v1 SaveKeysOnlyBox`;
+    fusedMotionEditContext -e -bulkkeyframerig $frameStart $frameEnd $saveKeyOnly $toolName;
+}
+
+global proc wipeRigKeyframe( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    fusedMotionEditContext -e -wiperigkeyframe $frameStart $frameEnd $toolName;
+}
+
+global proc finalizeOmissionIndices( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    fusedMotionEditContext -e -finalizeomissionindices $frameStart $frameEnd $toolName;
+}
+
+global proc computeAccelerationErrors( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    fusedMotionEditContext -e -computeaccelerationerrors $frameStart $frameEnd $toolName;
+}
+
+global proc setAccelerationEpsilon( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    float $accelerationEpsilon = `floatSliderGrp -q -v AccelerationEpsilonField`;
+    fusedMotionEditContext -e -accelerationepsilon $frameStart $frameEnd $accelerationEpsilon $toolName;
+}
+
+global proc resolveAccelerationErrors( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    int $numIterations = `intSliderGrp -q -v AccelerationResolutionIterationsField`;
+    fusedMotionEditContext -e -resolveaccelerationerrors $frameStart $frameEnd $numIterations $toolName;
+}
+
+global proc storeAccelerationErrors( string $toolName )
+{
+    fusedMotionEditContext -e -storeaccelerationerrors $toolName;
+}

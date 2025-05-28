@@ -3,7 +3,7 @@
 	url = https://github.com/lakshmipathyarjun6/nlopt
 [submodule "deps/geometry-central"]
 	path = deps/geometry-central
-	url = git@github.com:lakshmipathyarjun6/geometry-central.git
+	url = https://github.com/lakshmipathyarjun6/geometry-central
 [submodule "deps/fcpw"]
 	path = deps/fcpw
 	url = https://github.com/lakshmipathyarjun6/fcpw

@@ -1,0 +1,45 @@
+global proc smoothMotionEditContextProperties()
+{
+    string $parent = `toolPropertyWindow -q -location`;
+    setParent $parent;
+
+    setUITemplate -pushTemplate OptionsTemplate;
+
+    columnLayout smoothMotionEditContext;
+        frameLayout -collapsable true -collapse false
+            -label "Spline Creation";
+
+            columnLayout;
+                separator -style "none";
+
+                checkBoxGrp -label "Fit Object" FitObjectBox;
+
+                intFieldGrp -label "Frame Start, End" -numberOfFields 2
+                    -value1 1 -enable1 true -value2 1 -enable2 true FrameRangeField;
+
+                intFieldGrp -label "ControlPoints" -numberOfFields 1
+                    -value1 80 -enable1 true ControlPointsField;
+
+                button -label "Fit Splines" FitSplinesButton;
+
+            setParent ..;
+        setParent ..;
+
+        frameLayout -collapsable true -collapse false
+            -label "Animation";
+
+            columnLayout;
+                separator -style "none";
+
+                intFieldGrp -label "Jump to Frame" -numberOfFields 1
+                    -value1 0 -enable1 true FrameJumpField;
+
+                button -label "Load Splines" LoadSplinesButton;
+
+            setParent ..;
+        setParent ..;
+
+    setParent ..;
+
+    setUITemplate -popTemplate;
+}

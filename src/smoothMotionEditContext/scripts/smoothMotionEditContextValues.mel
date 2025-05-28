@@ -1,0 +1,48 @@
+global proc smoothMotionEditContextValues( string $toolName )
+{
+    string $parent = (`toolPropertyWindow -q -location`);
+    setParent $parent;
+
+    checkBoxGrp -e
+        -offCommand ("updateObjectFitSelection " + $toolName + " " + 0)
+        -onCommand ("updateObjectFitSelection " + $toolName + " " + 1)
+        FitObjectBox;
+
+    button -e
+        -command ("fitSplines " + $toolName)
+        FitSplinesButton;
+
+    intFieldGrp -e
+        -changeCommand ("jumpToFrame " + $toolName)
+        FrameJumpField;
+
+    button -e
+        -command ("loadSplines " + $toolName)
+        LoadSplinesButton;
+
+    toolPropertySelect "smoothMotionEditContext";
+}
+
+global proc updateObjectFitSelection( string $toolName, int $enable )
+{
+    smoothMotionEditContext -e -objectfitenabled $enable $toolName;
+}
+
+global proc fitSplines( string $toolName )
+{
+    int $frameStart = `intFieldGrp -q -v1 FrameRangeField`;
+    int $frameEnd = `intFieldGrp -q -v2 FrameRangeField`;
+    int $numControlPoints = `intFieldGrp -q -v1 ControlPointsField`;
+    smoothMotionEditContext -e -fitsplines $frameStart $frameEnd $numControlPoints $toolName;
+}
+
+global proc jumpToFrame( string $toolName )
+{
+    int $jumpFrame = `intFieldGrp -q -v1 FrameJumpField`;
+    smoothMotionEditContext -e -jump $jumpFrame $toolName;
+}
+
+global proc loadSplines( string $toolName )
+{
+    smoothMotionEditContext -e -loadsplines $toolName;
+}

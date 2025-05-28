@@ -98,7 +98,7 @@ markerCalibrationContext -> contactAxisCalibrationContext -> contactTransferEdit
 
 And for importing a new motion and generating a retargeted sequence:
 
-GRABMotionSequenceIO -> contactRaytraceContext -> fusedMotionEditContext -> smoothMotionEditContext
+<a target="_blank" href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/GRABMotionSequenceIO">GRABMotionSequenceIO</a> -> contactRaytraceContext -> fusedMotionEditContext -> smoothMotionEditContext
 
 Please see the README in each sub-folder for an overview of how to use each plugin. There are also a number of "auxiliary" plugins included to help with importing / exporting data which will be pointed to from each of the aformentioned "primary" plugins.
 

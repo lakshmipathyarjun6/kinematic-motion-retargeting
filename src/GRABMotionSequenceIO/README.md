@@ -51,7 +51,9 @@ Change the framerate to 120 fps, and set the timeline to the frame range of the 
 
 If the plugin is already loaded, you are ready to import the motion. Open the import menu and change the filetype to npz. After completion, re-center the camera to the scene (hotkey: f). The scene should look like the following:
 
-<TODO - image>
+<p align="center">
+<img src="../../images/GRABImportComplete.png" height="500">
+</p>
 
 You can now play and scrub through the animation using timeline. This completes the import.
 

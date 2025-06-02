@@ -43,13 +43,10 @@
 #define CONTACT_GROUP_PREFIX MString("contacts_")
 
 #define XYZ_BLOCK_SIZE 3
-#define NUM_HAND_JOINTS 16
 
 #define SCALE_MULT 100.0
 
 #define NUM_MOCAP_MARKERS 25
-
-// #define USE_BASELINE_POINTS
 
 using namespace std;
 
@@ -95,11 +92,9 @@ protected:
     MStatus setContactAttribute(MObject &contactSet,
                                 MStringArray &serializedContactPoints);
 
-    map<string, MDagPath> mJoints;
     map<string, MDagPath> mVirtualMocapMarkers;
     map<int, string> mVirtualMarkerVertexMappings;
 
-    string mJointNames[NUM_HAND_JOINTS];
     string mVirtualMocapMarkerNames[NUM_MOCAP_MARKERS];
 };
 

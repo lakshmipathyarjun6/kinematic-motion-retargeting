@@ -2,23 +2,6 @@
 
 GRABMotionSequenceIO::GRABMotionSequenceIO()
 {
-    mJointNames[0] = "wrist";
-    mJointNames[1] = "index1";
-    mJointNames[2] = "index2";
-    mJointNames[3] = "index3";
-    mJointNames[4] = "middle1";
-    mJointNames[5] = "middle2";
-    mJointNames[6] = "middle3";
-    mJointNames[7] = "pinky1";
-    mJointNames[8] = "pinky2";
-    mJointNames[9] = "pinky3";
-    mJointNames[10] = "ring1";
-    mJointNames[11] = "ring2";
-    mJointNames[12] = "ring3";
-    mJointNames[13] = "thumb1";
-    mJointNames[14] = "thumb2";
-    mJointNames[15] = "thumb3";
-
     mVirtualMocapMarkerNames[0] = "mmhandShapePinkyTip";
     mVirtualMocapMarkerNames[1] = "mmhandShapePinkyMiddle";
     mVirtualMocapMarkerNames[2] = "mmhandShapePinkyBase";
@@ -192,27 +175,8 @@ MStatus GRABMotionSequenceIO::readImport(string &fileName)
     int *numFramesData = numFramesNpy.data<int>();
     int numFrames = numFramesData[0];
 
-    cnpy::NpyArray handJointHierarchyNpy = dataNpz["handJointHierarchy"];
-    uint8_t *handJointHierarchyData = handJointHierarchyNpy.data<uint8_t>();
-
     double objectScale[3] = {SCALE_MULT, SCALE_MULT, SCALE_MULT};
     double tableScale[3] = {SCALE_MULT, SCALE_MULT, SCALE_MULT};
-
-    for (int i = 0; i < NUM_HAND_JOINTS; i++)
-    {
-        selectionList.clear();
-
-        MString jointName = mJointNames[i].c_str();
-
-        status = MGlobal::getSelectionListByName(jointName, selectionList);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        MDagPath jdp;
-        status = selectionList.getDagPath(0, jdp);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        mJoints[jointName.asChar()] = jdp;
-    }
 
     for (int i = 0; i < NUM_MOCAP_MARKERS; i++)
     {
@@ -248,20 +212,6 @@ MStatus GRABMotionSequenceIO::readImport(string &fileName)
     cnpy::NpyArray handVerticesNpy = dataNpz["handVertices"];
     float *handVerticesData = handVerticesNpy.data<float>();
 
-    cnpy::NpyArray handRootOrientationsNpy = dataNpz["handRootOrientations"];
-    float *handRootOrientationsData = handRootOrientationsNpy.data<float>();
-
-    cnpy::NpyArray handRootTranslationsNpy = dataNpz["handRootTranslations"];
-    float *handRootTranslationsData = handRootTranslationsNpy.data<float>();
-
-    cnpy::NpyArray handJointOrientationsNpy = dataNpz["handJointOrientations"];
-    float *handJointOrientationsData = handJointOrientationsNpy.data<float>();
-
-    cnpy::NpyArray handJointsRestConfigurationNpy =
-        dataNpz["handJointsRestConfiguration"];
-    float *handJointsRestConfigurationData =
-        handJointsRestConfigurationNpy.data<float>();
-
     cnpy::NpyArray objectRotationsNpy = dataNpz["objectRotations"];
     float *objectRotationsData = objectRotationsNpy.data<float>();
 
@@ -292,10 +242,6 @@ MStatus GRABMotionSequenceIO::readImport(string &fileName)
     MPointArray handVertexPoints;
 
     vector<float> handVertices;
-    vector<float> handJointsAtRest;
-    vector<float> handRootFrameOrientations;
-    vector<float> handRootFrameTranslations;
-    vector<float> handJointFrameOrientations;
 
     vector<float> objectFrameRotations;
     vector<float> objectFrameTranslations;
@@ -307,34 +253,6 @@ MStatus GRABMotionSequenceIO::readImport(string &fileName)
 
     int objectContactFrameIndex = 0;
     int objectContactDataIndex = 0;
-
-    // Hand joint rest configuration data for seeding rotations
-    extractElements(handJointsRestConfigurationData, handJointsAtRest,
-                    NUM_HAND_JOINTS * XYZ_BLOCK_SIZE);
-
-    MVectorArray handJointFixedTranslations;
-
-    for (int i = 0; i < NUM_HAND_JOINTS; i++)
-    {
-        string jointName = mJointNames[i];
-        MDagPath joint = mJoints[jointName];
-
-        MFnIkJoint fnJoint(joint, &status);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        int offset = i * XYZ_BLOCK_SIZE;
-
-        float transX = handJointsAtRest[offset];
-        float transY = handJointsAtRest[offset + 1];
-        float transZ = handJointsAtRest[offset + 2];
-
-        MVector jointTranslation(transX, transY, transZ);
-
-        jointTranslation *= SCALE_MULT;
-
-        status = handJointFixedTranslations.append(jointTranslation);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
 
     for (int frame = 0; frame < numFrames; frame++)
     {
@@ -348,21 +266,12 @@ MStatus GRABMotionSequenceIO::readImport(string &fileName)
         handVertexPoints.clear();
         handVertices.clear();
 
-        handRootFrameOrientations.clear();
-        handRootFrameTranslations.clear();
-        handJointFrameOrientations.clear();
-
         objectFrameRotations.clear();
         objectFrameTranslations.clear();
 
         extractElements(handVerticesData +
                             (frame * numHandVertices * XYZ_BLOCK_SIZE),
                         handVertices, numHandVertices * XYZ_BLOCK_SIZE);
-
-        extractElements(handJointOrientationsData +
-                            (frame * (NUM_HAND_JOINTS - 1) * XYZ_BLOCK_SIZE),
-                        handJointFrameOrientations,
-                        (NUM_HAND_JOINTS - 1) * XYZ_BLOCK_SIZE);
 
         for (int vIndex = 0; vIndex < numHandVertices; vIndex++)
         {
@@ -395,23 +304,6 @@ MStatus GRABMotionSequenceIO::readImport(string &fileName)
                 saveGenericKeyframe(mmName.c_str());
             }
         }
-
-        // Hand root transform data
-        extractElements(handRootOrientationsData + (frame * XYZ_BLOCK_SIZE),
-                        handRootFrameOrientations, XYZ_BLOCK_SIZE);
-
-        extractElements(handRootTranslationsData + (frame * XYZ_BLOCK_SIZE),
-                        handRootFrameTranslations, XYZ_BLOCK_SIZE);
-
-        MVector handRootRotation(handRootFrameOrientations[0],
-                                 handRootFrameOrientations[1],
-                                 handRootFrameOrientations[2]);
-
-        MVector handRootTranslation(handRootFrameTranslations[0],
-                                    handRootFrameTranslations[1],
-                                    handRootFrameTranslations[2]);
-
-        handRootTranslation *= SCALE_MULT;
 
         // Object transform data
         extractElements(objectRotationsData + (frame * XYZ_BLOCK_SIZE),
@@ -449,71 +341,12 @@ MStatus GRABMotionSequenceIO::readImport(string &fileName)
         status = fnHandMesh.setPoints(handVertexPoints);
         CHECK_MSTATUS_AND_RETURN_IT(status);
 
-        // Hand joint rotation data
-        for (int i = 1; i < NUM_HAND_JOINTS; i++)
-        {
-            string jointName = mJointNames[i];
-            MDagPath joint = mJoints[jointName];
-
-            MFnIkJoint fnJoint(joint, &status);
-            CHECK_MSTATUS_AND_RETURN_IT(status);
-
-            int offset = (i - 1) * XYZ_BLOCK_SIZE;
-
-            float rotX = handJointFrameOrientations[offset];
-            float rotY = handJointFrameOrientations[offset + 1];
-            float rotZ = handJointFrameOrientations[offset + 2];
-
-            MVector jointRotation(rotX, rotY, rotZ);
-
-            MTransformationMatrix jtf = fnJoint.transformation();
-            CHECK_MSTATUS_AND_RETURN_IT(status);
-
-            MVector jointTranslation = handJointFixedTranslations[i];
-
-            double theta = jointRotation.length();
-            MVector axis = jointRotation.normal();
-
-            status = jtf.setToRotationAxis(axis, theta);
-            CHECK_MSTATUS_AND_RETURN_IT(status);
-
-            status = jtf.setTranslation(jointTranslation, MSpace::kTransform);
-            CHECK_MSTATUS_AND_RETURN_IT(status);
-
-            status = fnJoint.set(jtf);
-            CHECK_MSTATUS_AND_RETURN_IT(status);
-
-            saveGenericKeyframe(jointName.c_str());
-        }
-
-        // Hand root data
-        MString handRootJointName = mJointNames[0].c_str();
-        MDagPath handRootJoint = mJoints[handRootJointName.asChar()];
-
-        MFnIkJoint fnHandRootJoint(handRootJoint, &status);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        MTransformationMatrix hrtf = fnHandRootJoint.transformation();
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        double theta = handRootRotation.length();
-        MVector axis = handRootRotation.normal();
-
-        status = hrtf.setToRotationAxis(axis, theta);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        status = hrtf.setTranslation(handRootTranslation, MSpace::kWorld);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        status = fnHandRootJoint.set(hrtf);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
         // Object data
         MTransformationMatrix otf = fnObjectTransform.transformation();
         CHECK_MSTATUS_AND_RETURN_IT(status);
 
-        theta = objectRotation.length();
-        axis = objectRotation.normal();
+        double theta = objectRotation.length();
+        MVector axis = objectRotation.normal();
 
         // TODO: Why inverted theta?
         status = otf.setToRotationAxis(axis, -theta);
@@ -550,11 +383,9 @@ MStatus GRABMotionSequenceIO::readImport(string &fileName)
 
         saveHandVertexKeyframe(numHandVertices);
 
-        saveGenericKeyframe(handRootJointName);
         saveGenericKeyframe(OBJECT_NAME);
         saveGenericKeyframe(TABLE_NAME);
 
-#ifndef USE_BASELINE_POINTS
         if ((int)contactFramesData[objectContactFrameIndex] == frame)
         {
             int numObjectContacts =
@@ -611,7 +442,6 @@ MStatus GRABMotionSequenceIO::readImport(string &fileName)
                 CHECK_MSTATUS_AND_RETURN_IT(status);
             }
         }
-#endif
     }
 
     return MS::kSuccess;

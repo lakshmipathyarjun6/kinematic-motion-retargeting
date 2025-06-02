@@ -44,7 +44,7 @@ This gives us all the data we need to reconstruct the scene in Maya.
 Create a new Maya scene, then import the MANO, object, and table OBJ meshes. Rename each in the scene editor to "hand", "object", and "table" respectively (very important). Your scene should look something like this:
 
 <p align="center">
-<img src="images/GRABImportSetup.png" height="200">
+<img src="../../images/GRABImportSetup.png" height="500">
 </p>
 
 Change the framerate to 120 fps, and set the timeline to the frame range of the motion.

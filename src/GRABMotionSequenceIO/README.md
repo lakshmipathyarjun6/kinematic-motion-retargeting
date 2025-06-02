@@ -22,3 +22,27 @@ If all is set up correctly, you should be able to run the following:
 cd GRAB/grab
 python exportRhandFullSequence.py --grab-path <PATH_TO_GRAB_DATASET_FOLDER> --out-path <PATH_TO_YOUR_EXPORT_FOLDER> --model-path <PATH_TO_YOUR_MANO_FOLDER> --motion-path <PATH_TO_GRAB_MOTION_YOU_WANT_TO_EXPORT>
 ```
+
+So, for example, if the GRAB data, export, and mano folders are all under Downloads, you can export the apple pass task motion for subject 5 via:
+
+```
+python exportRhandFullSequence.py --grab-path ~/Downloads/GRAB --out-path ~/Downloads/exports --model-path ~/Downloads --motion-path ~/Downloads/GRAB/grab/s5/apple_pass_1.npz
+```
+
+This should create three files in your export folder under the subdirectory s5:
+
+1. The fitted MANO hand mesh for the subject (.obj)
+2. The object mesh (.obj)
+3. The motion and contact sequence export (.npz)
+
+In addition to the object mesh, there is also a dedicated mesh for the table under the object_meshes subfolder of the GRAB data. Go ahead and convert this to an OBJ, and rename it to something other than table.obj (otherwise Maya will not allow you to rename it to 'table' in the scene later).
+
+This gives us all the data we need to reconstruct the scene in Maya.
+
+## Importing GRAB scenes into Maya
+
+Create a new Maya scene, then import the MANO, object, and table OBJ meshes. Rename each in the scene editor to "hand", "object", and "table" respectively (very important). Your scene should look something like this:
+
+<TODO - photo>
+
+Change the framerate to 120 fps, and set the timeline to the frame range of the motion.

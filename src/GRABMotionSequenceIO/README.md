@@ -48,3 +48,11 @@ Create a new Maya scene, then import the MANO, object, and table OBJ meshes. Ren
 </p>
 
 Change the framerate to 120 fps, and set the timeline to the frame range of the motion.
+
+If the plugin is already loaded, you are ready to import the motion. Open the import menu and change the filetype to npz. After completion, re-center the camera to the scene (hotkey: f). The scene should look like the following:
+
+<TODO - image>
+
+You can now play and scrub through the animation using timeline. This completes the import.
+
+Finally, because I intended to eventually export these motions into Mujoco / physics simulation for <a href="https://www.andrew.cmu.edu/user/aslakshm/pdfs/RSS2024WorkshopContactMPC.pdf">this</a> downstream paper, and because the table was thin and not a perfect box, I did not use the table imported by the data. Instead, I fitted my own table to the scene and left a lot of free-space clearance before the object to accommodate long-fingered hands. You thus need to replace the dataset table with an actual box geometry (cube polygon primitive). The scale dimensions of the cube will be extracted by the solver to compute the SDF.

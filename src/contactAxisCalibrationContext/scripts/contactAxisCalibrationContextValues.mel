@@ -1,0 +1,125 @@
+global proc contactAxisCalibrationContextValues( string $toolName )
+{
+    string $parent = (`toolPropertyWindow -q -location`);
+    setParent $parent;
+
+    textFieldGrp -e
+        -changeCommand ("setActiveAxisName " + $toolName)
+        ActiveAxisNameField;
+
+    textFieldGrp -e
+        -changeCommand ("selectSpecificMeshElement " + $toolName)
+        SpecificTargetMeshElementField;
+
+    textFieldButtonGrp -e
+        -changeCommand ("updateNewAxisName " + $toolName)
+        -buttonCommand ("createAxis " + $toolName)
+        NewAxisCreateField;
+
+    textFieldButtonGrp -e
+        -changeCommand ("updateTransferAxisName " + $toolName)
+        -buttonCommand ("transferAxis " + $toolName)
+        TransferAxisField;
+
+    floatSliderGrp -e
+        -changeCommand ("setActiveAxisLinearScale " + $toolName)
+        AxisLinearScaleField;
+    
+    floatSliderGrp -e
+        -changeCommand ("setActiveContactSpreadScale " + $toolName)
+        ContactSpreadScaleField;
+
+    button -e
+        -command ("clearSelectionBuffer " + $toolName)
+        ClearSelectionBufferButton;
+
+    floatSliderGrp -e
+        -changeCommand ("setParameterizedFilterDistance " + $toolName)
+        FilterDistanceField;
+
+    button -e
+        -command ("wipeAxis " + $toolName)
+        WipeAxisButton;
+
+    button -e
+        -command ("loadContactSample " + $toolName)
+        LoadContactSampleButton;
+    
+    button -e
+        -command ("testSampleTransfer " + $toolName)
+        TestSampleTransferButton;
+
+    toolPropertySelect "contactAxisCalibrationContext";
+}
+
+global proc setActiveAxisName( string $toolName )
+{
+    string $activeAxisName = `textFieldGrp -q -tx ActiveAxisNameField`;
+    contactAxisCalibrationContext -e -activeaxisname $activeAxisName $toolName;
+}
+
+global proc updateNewAxisName( string $toolName )
+{
+    string $newAxisName = `textFieldGrp -q -tx NewAxisCreateField`;
+    contactAxisCalibrationContext -e -newaxisname $newAxisName $toolName;
+}
+
+global proc createAxis( string $toolName )
+{
+    contactAxisCalibrationContext -e -createnewaxis $toolName;
+}
+
+global proc updateTransferAxisName( string $toolName )
+{
+    string $transferAxisName = `textFieldGrp -q -tx TransferAxisField`;
+    contactAxisCalibrationContext -e -tname $transferAxisName $toolName;
+}
+
+global proc transferAxis( string $toolName )
+{
+    contactAxisCalibrationContext -e -transferaxis $toolName;
+}
+
+global proc selectSpecificMeshElement( string $toolName )
+{
+    string $selectedElement = `textFieldGrp -q -tx SpecificTargetMeshElementField`;
+    contactAxisCalibrationContext -e -selectelement $selectedElement $toolName;
+}
+
+global proc setActiveAxisLinearScale( string $toolName )
+{
+    float $axisLinearScale = `floatSliderGrp -q -v AxisLinearScaleField`;
+    contactAxisCalibrationContext -e -axislinearscale $axisLinearScale $toolName;
+}
+
+global proc setActiveContactSpreadScale( string $toolName )
+{
+    float $contactSpreadScale = `floatSliderGrp -q -v ContactSpreadScaleField`;
+    contactAxisCalibrationContext -e -contactspreadscale $contactSpreadScale $toolName;
+}
+
+global proc clearSelectionBuffer( string $toolName )
+{
+    contactAxisCalibrationContext -e -clearselectionbuffer $toolName;
+}
+
+global proc setParameterizedFilterDistance( string $toolName )
+{
+    float $parameterizedFilterDistanceThreshold = `floatSliderGrp -q -v FilterDistanceField`;
+    contactAxisCalibrationContext -e -parameterizedfilterdistance $parameterizedFilterDistanceThreshold $toolName;
+}
+
+global proc wipeAxis( string $toolName )
+{
+    contactAxisCalibrationContext -e -wipe $toolName;
+}
+
+global proc loadContactSample( string $toolName )
+{
+    contactAxisCalibrationContext -e -loadcontactsample $toolName;
+}
+
+global proc testSampleTransfer( string $toolName )
+{
+    contactAxisCalibrationContext -e -testsampletransfer $toolName;
+}

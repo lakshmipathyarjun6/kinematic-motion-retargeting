@@ -7,7 +7,7 @@ Code for <a href="https://dl.acm.org/doi/10.1145/3723872">paper</a>
 
 ## Introduction
 
-This code is intended to be executed as a collection of plugins for Autodesk Maya. If you are unfamiliar Maya, there are a number of YouTube tutorials on getting started. We don't assume any prior knowledge beyond knowing how to navigate the viewport and a basic understanding of the default toolset. The code itself is primarily written in C++, is built with CMake, and requires the C++ 20 standard or higher. There are also some additional Python and MEL (Maya scripting language) scripts that are used for utility purposes. This codebase is intended to walk users through the process of creating results for *new hands* from scratch or, alternatively, creating retargeted motions for *new motions* for one of our existing hands.
+This code is intended to be executed as a collection of plugins for Autodesk Maya. If you are unfamiliar Maya, there are a number of YouTube tutorials on getting started. It does not assume any prior knowledge beyond knowing how to navigate the viewport and a basic understanding of the default toolset. The code itself is primarily written in C++, is built with CMake, and requires the C++ 20 standard or higher. There are also some additional Python and MEL (Maya scripting language) scripts that are used for utility purposes. This codebase is intended to walk users through the process of creating results for *new hands* from scratch or, alternatively, creating retargeted motions for *new motions* for one of our existing hands.
 
 For those who are only looking to download complete results for baseline comparisons or downstream applications, I strongly suggest just downloading the Maya binary files directly from [TODO: here]. If you want to export motions for use in other applications (e.g. keyframes, final B-splines, etc.), please skip down to the export section.
 
@@ -30,7 +30,7 @@ git clone --recursive https://github.com/lakshmipathyarjun6/kinematic_motion_ret
 cd kinematic_motion_retargeting/
 ```
 
-Before building, change the Maya version in the CMake file [here] to whatever year / version of Maya you installed on your machine. The default CMake file assumes 2024. This code should be foward and backwards compatible by at least a few years, but please let me know if you encounter problems with your version so I can flag the earliest / latest compatible versions.
+Before building, change the Maya version in the CMake file [TODO: here] to whatever year / version of Maya you installed on your machine. The default CMake file assumes 2024. This code should be foward and backwards compatible by at least a few years, but please let me know if you encounter problems with your version so I can flag the earliest / latest compatible versions.
 
 You can now build the CMake project:
 
@@ -80,7 +80,7 @@ Once Maya starts up, either in a new or existing scene, navigate to Windows >> S
 
 If you set your Maya.env file to point to your build folder, all the plugins should be visible:
 
-<TODO: Put image here>
+<TODO: Plugin visibility>
 
 Select "Auto load" as well as "Loaded" on all the plugins. Make sure there are no errors, then save the current scene (you can delete it afterward) and restart Maya. The plugins should now automatically be loaded whenever Maya is started.
 
@@ -89,6 +89,16 @@ If you wish to edit the code of any existing plugin, please note that Maya (to t
 The plugins for this project are all built as IO plugins or Edit Context plugins. If you are generally interested in building new plugins, either in conjunction with this repository or in a separate project, I would highly recommend <a href="https://www.cgcircuit.com/course/introduction-to-the-maya-api">this video series</a>. I consistently referred to it when building Maya projects - please consider supporting this creator :smile:.
 
 By default, Maya's world space is configured to use *centimeters* for distances, degrees for angles, and a Z-Up ground plane configuration. You can modify any of these via Windows >> Settings/Preferences >> Preferences >> Settings. These settings will be saved between restarts and only adjust the settings of the active UI. You may access information in any convention via the API.
+
+## Maya Plugin Activation
+
+Many of the plugins in this repository are custom "Edit Context" plugins, which are essentially tool plugins that hook into the primary scene graph with read and write privileges. The paintbrush, cursor, and other default Maya tools on the left panel can all be thought of as Edit Context plugins. All loaded edit context plugins are available in the Maya editor, but must be activated and de-activated. Only one edit context can be active at a given time. Importantly, while all plugins inherit some default behaviors (e.g. camera navigation), they are responsible for defining their own behaviors for others (e.g. left-mouse click, drags, etc.). As such, you should generally NOT expect default behaviors (e.g. clicking outside the object to de-select it) to be retained when plugins are active.
+
+The plugins in this repository need to be activated directly via MEL commands entered in the Maya command window. Each plugin README will provide the MEL command to run.
+
+Edit context plugins can also (optionally) be given a customized toolkit that will be setup and torn down when the plugin is activated and de-activatd. This toolkit will replace the data in the Tool Editor window. Each plugin README will explain how to use its toolkit. The locations of both these windows are shown below:
+
+<TODO: Tool windows>
 
 ## Processing New Hands and Motion Data
 

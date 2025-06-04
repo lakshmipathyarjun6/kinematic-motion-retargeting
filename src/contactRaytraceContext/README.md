@@ -46,10 +46,12 @@ If successfull, you should see the following Tool Editor menu:
 
 3. Plot the distances and view the distribution. It shold be strongly skewed right.
 
-4. Set a distance threshold to prune contacts in the distribution tail. The exact choice depends on how much possible error you are willing to tolerate. I'd generally recommend something in the range of 1.0 - 2.0 (default unit is centimeters). My threshold was around 1.5 cm or so. I would generally starting with a higher number to be conservative and go down if desired.
+4. Set a distance threshold to prune contacts in the distribution tail. The exact choice depends on how much possible error you are willing to tolerate. I'd generally recommend something in the range of 1.0 - 2.0 (default unit is centimeters). My threshold was around 1.5 cm or so. I suggest starting with a higher number and reducing it if desired.
 
 5. Prune all targeted contacts
 
 6. Scan a few frames in the result to check for quality
+
+7. Export the hand contacts via the <TODO: contactexport> plugin
 
 Next step: <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a>

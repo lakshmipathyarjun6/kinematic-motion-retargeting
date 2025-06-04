@@ -40,13 +40,15 @@ If successfull, you should see the following Tool Editor menu:
 
 ## General workflow
 
-1. Retarget contacts for all frames
+1. If you skipped the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactAxisCalibrationContext">contactAxisCalibrationContext</a> plugin, import the source hand contacts for the motion you wish to retarget via the <TODO: contactexport> plugin
 
-2. Scan a few frames in the result to check for quality
+2. Retarget contacts for all frames
 
-3. If there are contacts to ignore (e.g. target hand has fewer fingers), set the distance threshold and <TODO: fill in>
+3. Scan a few frames in the result to check for quality
 
-4. Export the target hand contacts via the <TODO: contactexport> plugin
+4. If there are contacts to ignore (e.g. target hand has fewer fingers), set the distance threshold and <TODO: fill in>
+
+5. Export the target hand contacts via the <TODO: contactexport> plugin
 
 WARNING: This process will take some time, especially if there are a lot of contacts to retarget. It can take anywhere from a  run anywhere from a few minutes to overnight. 
 

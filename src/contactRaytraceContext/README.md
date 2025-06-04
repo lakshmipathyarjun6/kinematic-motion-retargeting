@@ -52,4 +52,4 @@ If successfull, you should see the following Tool Editor menu:
 
 6. Scan a few frames in the result to check for quality
 
-If the result appears reasonable, save the scene and continue to the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/fusedMotionEditContext">fusedMotionEditContext</a> plugin.
+Next step: <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a>

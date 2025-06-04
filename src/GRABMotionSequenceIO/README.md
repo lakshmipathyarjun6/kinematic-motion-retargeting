@@ -58,3 +58,5 @@ If the plugin is already loaded, you are ready to import the motion. Open the im
 You can now play and scrub through the animation using timeline. This completes the import.
 
 Finally, because I intended to eventually export these motions into Mujoco / physics simulation for <a href="https://www.andrew.cmu.edu/user/aslakshm/pdfs/RSS2024WorkshopContactMPC.pdf">this</a> downstream paper, and because the table was thin and not a perfect box, I did not use the table imported by the data. Instead, I fitted my own table to the scene and left a lot of free-space clearance before the object to accommodate long-fingered hands. You thus need to replace the dataset table with an actual box geometry (cube polygon primitive). The scale dimensions of the cube will be extracted by the solver to compute the SDF. Delete the imported table, and rename the box to 'table'. After the scale dimensions are set, you adjust the pose to fit the motion as you see fit.
+
+Next step: <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactRaytraceContext">contactRaytraceContext</a>

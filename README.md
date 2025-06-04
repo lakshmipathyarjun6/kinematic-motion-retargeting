@@ -30,7 +30,7 @@ git clone --recursive https://github.com/lakshmipathyarjun6/kinematic_motion_ret
 cd kinematic_motion_retargeting/
 ```
 
-Before building, change the Maya version in the CMake file [TODO: here] to whatever year / version of Maya you installed on your machine. The default CMake file assumes 2024. This code should be foward and backwards compatible by at least a few years, but please let me know if you encounter problems with your version so I can flag the earliest / latest compatible versions.
+Before building, change the Maya version in the CMake file <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/blob/main/CMakeLists.txt#L6">here</a> to whatever year / version of Maya you installed on your machine. The default CMake file assumes 2024. This code should be foward and backwards compatible by at least a few years, but please let me know if you encounter problems with your version so I can flag the earliest / latest compatible versions.
 
 You can now build the CMake project:
 
@@ -104,11 +104,11 @@ Edit context plugins can also (optionally) be given a customized toolkit that wi
 
 The general "flow of primary plugins" to use when preparing a new hand for retargeting is:
 
-<a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/markerCalibrationContext">markerCalibrationContext</a> -> contactAxisCalibrationContext -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a>
+<a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/markerCalibrationContext">markerCalibrationContext</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactAxisCalibrationContext">contactAxisCalibrationContext</a>
 
 And for importing a new motion and generating a retargeted sequence:
 
-<a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/GRABMotionSequenceIO">GRABMotionSequenceIO</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactRaytraceContext">contactRaytraceContext</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/fusedMotionEditContext">fusedMotionEditContext</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/smoothMotionEditContext">smoothMotionEditContext</a>
+<a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/GRABMotionSequenceIO">GRABMotionSequenceIO</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactRaytraceContext">contactRaytraceContext</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/fusedMotionEditContext">fusedMotionEditContext</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/smoothMotionEditContext">smoothMotionEditContext</a>
 
 Please see the README in each sub-folder for an overview of how to use each plugin. There are also a number of auxiliary plugins included to help with importing / exporting data.
 

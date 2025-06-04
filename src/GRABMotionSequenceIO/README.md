@@ -1,6 +1,6 @@
 # Exporting and Importing Data from the GRAB Dataset
 
-This plugin imports data from the <a href="https://grab.is.tue.mpg.de/">GRAB dataset</a>, which serves as the source for all our original motions, into Maya.
+This plugin imports data from the <a href="https://grab.is.tue.mpg.de/">GRAB dataset</a>, which serves as the source for all our original motions, into Maya. It does not assume any previous plugin has been used. It can be thought of as the entry point into the framework.
 
 ## Getting started
 

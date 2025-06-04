@@ -1,0 +1,71 @@
+global proc contactAxisCalibrationContextProperties()
+{
+    string $parent = `toolPropertyWindow -q -location`;
+    setParent $parent;
+
+    setUITemplate -pushTemplate OptionsTemplate;
+
+    columnLayout contactAxisCalibrationContext;
+        frameLayout -collapsable true -collapse false
+            -label "Axis Calibration Options";
+
+            columnLayout;
+                separator -style "none";
+
+                textFieldGrp -label "Active Axis" ActiveAxisNameField;
+
+                textFieldGrp -label "Target Mesh Element" SpecificTargetMeshElementField;
+
+                textFieldButtonGrp -label "New Axis" 
+                    -buttonLabel "Create" NewAxisCreateField;
+
+                textFieldButtonGrp -label "Transfer Axis" 
+                    -buttonLabel "Transfer" TransferAxisField;
+
+                floatSliderGrp -label "Axis Linear Scale" -field true
+                    -minValue 0.5 -maxValue 2.0
+                    -fieldMinValue 0.5 -fieldMaxValue 2.0
+                    -value 1.0 AxisLinearScaleField;
+
+                floatSliderGrp -label "Contact Spread Scale" -field true
+                    -minValue 0.5 -maxValue 2.0
+                    -fieldMinValue 0.5 -fieldMaxValue 2.0
+                    -value 1.0 ContactSpreadScaleField;
+
+                button -label "Clear Point Selection" ClearSelectionBufferButton;
+            
+            setParent ..;
+        setParent ..;
+
+        frameLayout -collapsable true -collapse false
+            -label "Cleanup Options";
+
+            columnLayout;
+                separator -style "none";
+
+                floatSliderGrp -label "Filter Distance" -field true
+                    -minValue 0.1 -maxValue 30.0
+                    -fieldMinValue 0.1 -fieldMaxValue 30.0
+                    -value 30.0 FilterDistanceField;
+
+                button -label "Wipe" WipeAxisButton;
+
+            setParent ..;
+        setParent ..;
+
+        frameLayout -collapsable true -collapse false
+            -label "Testing";
+
+            columnLayout;
+                separator -style "none";
+
+                button -label "Load Contact Sample" LoadContactSampleButton;
+
+                button -label "Test Sample Transfer" TestSampleTransferButton;
+
+            setParent ..;
+        setParent ..;
+    setParent ..;
+
+    setUITemplate -popTemplate;
+}

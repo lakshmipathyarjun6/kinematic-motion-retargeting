@@ -23,7 +23,7 @@ You will first need to download and install Autodesk Maya, as well as obtain a v
 
 If you do not already have CMake installed, please do so as well. You will also need OpenGL, but this should typically come installed on most systems.
 
-Next, install <a href="https://eigen.tuxfamily.org/dox/">Eigen</a> and <a href="https://github.com/madler/zlib">Zlib</a>. The easiest way to do so is via a package manager (Hombrew on Mac, apt on Linux). Unsurprisingly, life is more complicated for Windows. For ZLib, your best option is to download to pre-build binary <a href="https://github.com/CristiFati/Prebuilt-Binaries/tree/master/ZLib/v1">here</a> and then run CMake with a <a href"https://stackoverflow.com/questions/79381766/install-zlib-library-on-windows-for-msvc">this flag</a>.  
+Next, install <a href="https://eigen.tuxfamily.org/dox/">Eigen</a> and <a href="https://github.com/madler/zlib">Zlib</a>. The easiest way to do so is via a package manager (Hombrew on Mac, apt on Linux). Unsurprisingly, life is more complicated for Windows. For ZLib, your best option is to download to pre-build binary <a href="https://github.com/CristiFati/Prebuilt-Binaries/tree/master/ZLib/v1">here</a> and then run CMake with <a href"https://stackoverflow.com/questions/79381766/install-zlib-library-on-windows-for-msvc">this flag</a>.  
 
 Next, clone this repository *recursively* to make sure all dependency submodules are fetched:
 

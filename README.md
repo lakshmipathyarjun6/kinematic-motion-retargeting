@@ -9,7 +9,9 @@ Code for <a href="https://dl.acm.org/doi/10.1145/3723872">paper</a>
 
 This code is intended to be executed as a collection of plugins for Autodesk Maya. If you are unfamiliar Maya, there are a number of YouTube tutorials on getting started. It does not assume any prior knowledge beyond knowing how to navigate the viewport and a basic understanding of the default toolset. The code itself is primarily written in C++, is built with CMake, and requires the C++ 20 standard or higher. There are also some additional Python and MEL (Maya scripting language) scripts that are used for utility purposes. This codebase is intended to walk users through the process of creating results for *new hands* from scratch or, alternatively, creating retargeted motions for *new motions* for one of our existing hands.
 
-For those who are only looking to download complete results for baseline comparisons or downstream applications, I strongly suggest just downloading the Maya binary files directly from [TODO: here]. If you want to export motions for use in other applications (e.g. keyframes, final B-splines, etc.), please skip down to the export section.
+For those who are only looking to download complete results for baseline comparisons or downstream applications, I strongly suggest just downloading the Maya files directly from <a href="https://drive.google.com/drive/folders/1O33tOWO4Vpb1knBHtDXSwhtUHMGdyZfS">here</a>.
+
+You can also download our hands and other assets from <a href="https://drive.google.com/drive/folders/1yZNd8S02GbZjkFYTiGYOYGZ3CKxrzuxU">here</a>. Please see the README file in the drive folder for an overview of contents.
 
 ## Why on earth are you using Maya instead of literally anything else (e.g. Blender, Open3d, \<insert favorite Python visualizer\>)?
 

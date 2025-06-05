@@ -19,7 +19,7 @@ cp path/to/project/kinematic-motion-retargeting/src/contactAxisCalibrationContex
 
 Linux:
 ```
-TODO
+cp path/to/project/kinematic-motion-retargeting/src/contactAxisCalibrationContext/scripts/* ~/maya/<year>/scripts
 ```
 
 Windows:

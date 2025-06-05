@@ -15,7 +15,7 @@ cp path/to/project/kinematic-motion-retargeting/src/contactTransferEditContext/s
 
 Linux:
 ```
-TODO
+cp path/to/project/kinematic-motion-retargeting/src/contactTransferEditContext/scripts/* ~/maya/<year>/scripts
 ```
 
 Windows:

@@ -52,7 +52,7 @@ cd ~/Library/Preferences/Autodesk/maya/<year>/
 
 Linux:
 ```
-TODO
+cd ~/maya/<year>/
 ```
 
 Windows:

@@ -34,7 +34,7 @@ cd kinematic_motion_retargeting/
 
 Before building, change the Maya version in the CMake file <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/blob/main/CMakeLists.txt#L6">here</a> to whatever year / version of Maya you installed on your machine. The default CMake file assumes 2024. This code should be foward and backwards compatible by at least a few years, but please let me know if you encounter problems with your version so I can flag the earliest / latest compatible versions.
 
-You can now build the CMake project:
+You can now generate the CMake project:
 
 ```
 mkdir build
@@ -43,7 +43,16 @@ cmake ..
 make -j5
 ```
 
-If successfull, you should see a number of dynamic libraries (.bundle on Mac, .mll on Windows, .so on Linux) generated in the build folder.
+And build:
+
+Mac and Linux:
+```
+make -j5
+```
+
+Windows: Assuming you are using Visual Studio (strongly recommended), open the .sln file that was created in the build fuilder. Set the build configuration to Release mode, then run ALL_BUILD on the right panel.
+
+If successfull, you should see a number of dynamic libraries (.bundle on Mac, .mll on Windows, .so on Linux) generated in the build (or on Windows, build/Release) folder.
 
 The final step is to make the plugins visible to Maya. While you can load them individually on Maya startup, this is cumbersome. Instead, I suggest pointing your Maya environment path to the build folder location. To do so, navigate to the following location:
 

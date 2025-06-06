@@ -68,7 +68,7 @@ cd ~/maya/<year>/
 
 Windows:
 ```
-TODO
+cd %HOMEPATH%\Documents\maya\2024\scripts\
 ```
 
 And add the following line to the Maya.env file in that location:

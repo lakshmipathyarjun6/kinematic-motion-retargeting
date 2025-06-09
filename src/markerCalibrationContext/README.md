@@ -21,6 +21,6 @@ If successfull, you should see the following Tool Editor menu:
 
 ## General workflow
 
-Please watch <TODO: upload and link>this video for a detailed introduction of how to use this plugin
+Please watch <a href="https://youtu.be/9q-ZZtBrBwc">this video</a> for a detailed introduction of how to use this plugin
 
 Next step: <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactAxisCalibrationContext">contactAxisCalibrationContext</a>

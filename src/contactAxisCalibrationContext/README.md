@@ -46,6 +46,6 @@ If successfull, you should see the following Tool Editor menu:
 
 1. Import the source hand contacts for the motion you wish to retarget via the <TODO: contactexport> plugin
 
-2. Please watch <TODO: upload and link>this video for a detailed introduction of how to use this plugin
+2. Please watch <a href="https://youtu.be/9q-ZZtBrBwc">this video</a> for a detailed introduction of how to use this plugin
 
 Next step: <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a>

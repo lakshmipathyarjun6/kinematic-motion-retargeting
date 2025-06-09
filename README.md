@@ -81,7 +81,11 @@ This line will instruct Maya to automatically make all plugins in the build fold
 
 ## Maya Setup
 
-I strongly recommend starting Maya via command line instead of the Desktop shortuct. This will make debugging / print statements visible in the console.
+I strongly recommend starting Maya via command line instead of the Desktop shortuct. This will make debugging / print statements visible in the console. The easiest way to do so is by adding the Maya executable plugin to your path via BashRC. For example, on Mac, adding the following line added to your ZProfile will do the trick:
+
+```
+PATH="/Applications/Autodesk/maya2024/Maya.app/Contents/bin/":"$PATH"
+```
 
 Once Maya starts up, either in a new or existing scene, navigate to Windows >> Settings/Preferences >> Plug-In Manager in the main navigation bar:
 

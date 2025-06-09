@@ -4,7 +4,7 @@ This Edit Context plugin enables creating and editing landmark placements on bot
 
 ## Setup
 
-If you only intend to use our target hands, you can skip this plugin altogether and instead just download one of our existing annotated files <TODO: link>. 
+If you only intend to use our target hands, you can skip this plugin altogether and instead just download one of our <a href="https://drive.google.com/drive/folders/1d9EjWqPb09t-DLPoEz1aoiV9DDeMPyME">existing annotated files</a>. 
 
 NOTE: At this time, source code is not available for this plugin. Because it uses many techniques from the cited paper, it was easier to just use a pre-built plugin from source code built for that repository rather than making one from scratch. But we have not yet figured out licensing for that code, and we cannot distribute it without one. Instead, we have created pre-compiled binaries of this plugin for all major operating systems that can be downloaded <a href="https://drive.google.com/drive/folders/1CJtLK6fQnnb_Y75wDhZSsT6FsGoL5nvr">here</a>
 

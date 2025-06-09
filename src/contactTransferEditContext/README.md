@@ -48,7 +48,7 @@ If successfull, you should see the following Tool Editor menu:
 
 4. If there are contacts to ignore (e.g. target hand has fewer fingers), set the distance threshold and <TODO: fill in>
 
-5. Export the target hand contacts via the <TODO: contactexport> plugin
+5. Export the target hand contacts via the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactSequenceIO">contactSequenceIO</a> plugin
 
 WARNING: This process will take some time, especially if there are a lot of contacts to retarget. It can take anywhere from a  run anywhere from a few minutes to overnight. 
 

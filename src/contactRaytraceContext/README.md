@@ -52,6 +52,6 @@ If successfull, you should see the following Tool Editor menu:
 
 6. Scan a few frames in the result to check for quality
 
-7. Export the hand contacts via the <TODO: contactexport> plugin
+7. Export the hand contacts via the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactSequenceIO">contactSequenceIO</a> plugin
 
 Next step: <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a>

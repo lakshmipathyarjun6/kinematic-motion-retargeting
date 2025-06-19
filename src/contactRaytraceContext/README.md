@@ -46,7 +46,7 @@ If successfull, you should see the following Tool Editor menu:
 
 "Raytrace All Keyframes in Range" Button: Perform the "Raytrace Contacts" Button operation in bulk for all the keyframes in range.
 
-"Dump Distances to File" Button: Compute the L2 distances between all paired hand-object contacts across all specfieid keyframes and dump the results to the file specified <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/blob/main/src/contactRaytraceContext/contactRaytraceContext.hpp#L62">here</a> (if no absolute path is given, the home directory is assumed).
+"Dump Distances to File" Button: Compute the L2 distances between all paired hand-object contacts across all specfieid keyframes and dump the results to the file specified <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/blob/main/src/contactRaytraceContext/contactRaytraceContext.hpp#L62">here</a>. If no absolute path is given, the file is created in the home directory.
 
 "Cutoff Distance": The L2 permittance distance threshold (in scene units - Maya defaults to cm) to consider contacts valid.
 

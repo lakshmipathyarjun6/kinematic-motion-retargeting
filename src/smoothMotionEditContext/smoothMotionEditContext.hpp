@@ -103,8 +103,6 @@ public:
 
     virtual void getClassName(MString &name) const;
 
-    MStatus enableObjectFit(bool enable);
-
     MStatus fitSplines(int frameStart, int frameEnd, int numControlPoints);
 
     MStatus jumpToFrame(int frame, bool suppressVisualization = false);
@@ -148,8 +146,6 @@ public:
 
     MStatus fitHandDofSplines(int numControlPoints);
 
-    MStatus fitObjectMotionSplines(int numControlPoints);
-
     MStatus getMocapMarker(MString &mocapMarkerName, MDagPath &mocapMarkerDag);
 
     MStatus getPairedFrameContactPoints(
@@ -179,8 +175,6 @@ public:
     MStatus loadRigDofSolutionFull();
 
     MStatus loadRigDofSolutionSingle(int rigDofIndex);
-
-    MStatus loadSceneObjectState();
 
     MStatus loadSceneRigState();
 
@@ -234,11 +228,6 @@ private:
     MDagPathArray m_rig_joints;
     MDoubleArray m_rig_dof_vector;
     vector<pair<int, int>> m_rig_dof_vec_mappings;
-
-    // Object fit vars
-
-    bool m_object_fit_enabled;
-    MDoubleArray m_object_dof_vector;
 
     // Marker pairing vars
 

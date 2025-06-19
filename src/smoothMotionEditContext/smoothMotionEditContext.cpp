@@ -2,9 +2,7 @@
 
 // Setup and Teardown
 
-SmoothMotionEditContext::SmoothMotionEditContext() : m_object_fit_enabled(false)
-{
-}
+SmoothMotionEditContext::SmoothMotionEditContext() {}
 
 SmoothMotionEditContext::~SmoothMotionEditContext() {}
 
@@ -80,22 +78,6 @@ void SmoothMotionEditContext::getClassName(MString &name) const
     name.set("smoothMotionEditContext");
 }
 
-MStatus SmoothMotionEditContext::enableObjectFit(bool enable)
-{
-    m_object_fit_enabled = enable;
-
-    if (m_object_fit_enabled)
-    {
-        MGlobal::displayInfo("Object fit enabled");
-    }
-    else
-    {
-        MGlobal::displayInfo("Object fit disabled");
-    }
-
-    return MS::kSuccess;
-}
-
 MStatus SmoothMotionEditContext::fitSplines(int frameStart, int frameEnd,
                                             int numControlPoints)
 {
@@ -117,16 +99,8 @@ MStatus SmoothMotionEditContext::fitSplines(int frameStart, int frameEnd,
     status = clearVisualizations();
     CHECK_MSTATUS_AND_RETURN_IT(status);
 
-    if (m_object_fit_enabled)
-    {
-        status = fitObjectMotionSplines(numControlPoints);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
-    else
-    {
-        status = fitHandDofSplines(numControlPoints);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
+    status = fitHandDofSplines(numControlPoints);
+    CHECK_MSTATUS_AND_RETURN_IT(status);
 
     status = jumpToFrame(m_start_frame, true);
     CHECK_MSTATUS_AND_RETURN_IT(status);
@@ -1336,158 +1310,6 @@ MStatus SmoothMotionEditContext::fitHandDofSplines(int numControlPoints)
     return MS::kSuccess;
 }
 
-MStatus SmoothMotionEditContext::fitObjectMotionSplines(int numControlPoints)
-{
-    MStatus status;
-
-    MSelectionList selectionList;
-
-    vector<vector<Vector2<double>>> allFrameDofValues;
-
-    for (int objectDofIndex = 0; objectDofIndex < NUM_OBJECT_DOFS;
-         objectDofIndex++)
-    {
-        vector<Vector2<double>> frameDofValues;
-        allFrameDofValues.push_back(frameDofValues);
-    }
-
-    status = MGlobal::getSelectionListByName(
-        DEFAULT_OBJECT_SPLINE_STORAGE_GROUP, selectionList);
-
-    if (status == MS::kSuccess)
-    {
-        MObject existingSplineGroup;
-        status = selectionList.getDependNode(0, existingSplineGroup);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        status = MGlobal::deleteNode(existingSplineGroup);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
-
-    MFnTransform fnTransform;
-    MObject splineGroup = fnTransform.create();
-
-    MFnTransform fnSplineGroupTransform(splineGroup, &status);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    fnSplineGroupTransform.setName(DEFAULT_OBJECT_SPLINE_STORAGE_GROUP, false,
-                                   &status);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    status = setNumericAttribute(DEFAULT_OBJECT_SPLINE_STORAGE_GROUP,
-                                 SPLINE_RANGE_START, m_start_frame);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    status = setNumericAttribute(DEFAULT_OBJECT_SPLINE_STORAGE_GROUP,
-                                 SPLINE_RANGE_END, m_end_frame);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    MDoubleArray splineKnots;
-
-    // Assume standard knot vector with full endpoint multiplicity
-    double knotIndex = 0;
-
-    for (int i = 0; i < SPLINE_DEGREE; i++)
-    {
-        status = splineKnots.append(knotIndex);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
-
-    for (int i = 0; i < numControlPoints - SPLINE_DEGREE - 1; i++)
-    {
-        knotIndex++;
-        status = splineKnots.append(knotIndex);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
-
-    knotIndex++;
-
-    for (int i = 0; i < SPLINE_DEGREE; i++)
-    {
-        status = splineKnots.append(knotIndex);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
-
-    double maxKnotIndex = 1.0 * knotIndex;
-
-    // Normalize knot vector
-    for (int i = 0; i < splineKnots.length(); i++)
-    {
-        splineKnots[i] /= maxKnotIndex;
-    }
-
-    for (int frame = m_start_frame; frame <= m_end_frame; frame++)
-    {
-        status = jumpToFrame(frame, true);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        status = loadSceneObjectState();
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        for (int objectDofIndex = 0; objectDofIndex < NUM_OBJECT_DOFS;
-             objectDofIndex++)
-        {
-            Vector2<double> samplePoint;
-            samplePoint[0] = (double)frame;
-            samplePoint[1] = m_object_dof_vector[objectDofIndex];
-
-            allFrameDofValues[objectDofIndex].push_back(samplePoint);
-        }
-    }
-
-    float multiplier = 1.0f / (m_end_frame - 1.0f);
-
-    vector<MDoubleArray> allObjectDofTrajectories;
-
-    for (int objectDofIndex = 0; objectDofIndex < NUM_OBJECT_DOFS;
-         objectDofIndex++)
-    {
-        unique_ptr<BSplineCurveFit<double>> objectDofSpline =
-            make_unique<BSplineCurveFit<double>>(
-                SPLINE_DIMENSION, allFrameDofValues[objectDofIndex].size(),
-                reinterpret_cast<double const *>(
-                    &allFrameDofValues[objectDofIndex][0]),
-                SPLINE_DEGREE, numControlPoints);
-
-        MPointArray controlPoints;
-
-        const double *controlData = objectDofSpline->GetControlData();
-
-        for (int controlIndex = 0; controlIndex < numControlPoints;
-             controlIndex++)
-        {
-            int jumpIndex = controlIndex * SPLINE_DIMENSION;
-
-            double controlPosition = controlData[jumpIndex];
-            double controlValue = controlData[jumpIndex + 1];
-
-            if (objectDofIndex < 3)
-            {
-                controlValue *= 180.0 / M_PI;
-            }
-
-            MPoint controlPoint(controlPosition, controlValue);
-
-            status = controlPoints.append(controlPoint);
-            CHECK_MSTATUS_AND_RETURN_IT(status);
-        }
-
-        MFnNurbsCurve fnSplineGenerator;
-
-        MObject splineDofCurve = fnSplineGenerator.create(
-            controlPoints, splineKnots, SPLINE_DEGREE, MFnNurbsCurve::kOpen,
-            true, true, splineGroup, &status);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        MString splineName = SPLINE_DOF_PREFIX + objectDofIndex;
-
-        fnSplineGenerator.setName(splineName, false, &status);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
-
-    return MS::kSuccess;
-}
-
 MStatus SmoothMotionEditContext::getMocapMarker(MString &mocapMarkerName,
                                                 MDagPath &mocapMarkerDag)
 {
@@ -1948,49 +1770,6 @@ MStatus SmoothMotionEditContext::loadRigDofSolutionSingle(int rigDofIndex)
         rotation[dofIndex] = value;
 
         status = fnJoint.setRotation(rotation, order);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
-
-    return MS::kSuccess;
-}
-
-MStatus SmoothMotionEditContext::loadSceneObjectState()
-{
-    MStatus status;
-
-    MSelectionList selectionList;
-
-    status = m_object_dof_vector.clear();
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    status = MGlobal::getSelectionListByName(OBJECT_NAME, selectionList);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    MDagPath objectTransform;
-    status = selectionList.getDagPath(0, objectTransform);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    MFnTransform fnObjectTransform(objectTransform, &status);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    MVector transVec =
-        fnObjectTransform.getTranslation(MSpace::kWorld, &status);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    double rotation[3];
-    MTransformationMatrix::RotationOrder order;
-
-    status = fnObjectTransform.getRotation(rotation, order);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
-    for (int i = 0; i < 3; i++)
-    {
-        status = m_object_dof_vector.append(rotation[i]);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
-    for (int i = 0; i < 3; i++)
-    {
-        status = m_object_dof_vector.append(transVec[i]);
         CHECK_MSTATUS_AND_RETURN_IT(status);
     }
 

@@ -12,12 +12,10 @@ global proc smoothMotionEditContextProperties()
             columnLayout;
                 separator -style "none";
 
-                checkBoxGrp -label "Fit Object" FitObjectBox;
-
-                intFieldGrp -label "Frame Start, End" -numberOfFields 2
+                intFieldGrp -label "Keyframe Range" -numberOfFields 2
                     -value1 1 -enable1 true -value2 1 -enable2 true FrameRangeField;
 
-                intFieldGrp -label "ControlPoints" -numberOfFields 1
+                intFieldGrp -label "Control Points" -numberOfFields 1
                     -value1 80 -enable1 true ControlPointsField;
 
                 button -label "Fit Splines" FitSplinesButton;

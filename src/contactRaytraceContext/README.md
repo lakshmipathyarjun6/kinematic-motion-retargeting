@@ -35,6 +35,7 @@ If successfull, you should see the following Tool Editor menu:
 <p align="center">
 <img src="../../images/ContactRaytraceTools.png" height="500">
 </p>
+
 ## Plugin tools
 
 "Jump to Frame": Jumps the animation timeline to the specified frame and loads all the contacts (if any in that frame). Note that you must enter a different frame number than the value already in the window for anything to happen.

@@ -52,7 +52,7 @@ If successfull, you should see the following Tool Editor menu:
 
 "Axis Linear Scale": Adjusts the value of $\lambda$<sub>A</sub> for the active axis.
 
-"Contact Spread Scale": Adjusts the value of $\lambda$<sub>S</sub> for the active axis.
+"Contact Spread Scale": Adjusts the value of $\lambda$<sub>S</sub> for the active axis. This value is stored in the scene outliner and is queried by the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a> plugin.
 
 "Clear Point Selection" Button: Clears the current point selections (e.g. yellow dots) during the axis creation or transfer process.
 

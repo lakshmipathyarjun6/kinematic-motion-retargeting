@@ -32,11 +32,25 @@ setToolTo ctec
 
 If successfull, you should see the following Tool Editor menu:
 
-<TODO: TW Image>
+<p align="center">
+<img src="../../images/ContactTransferTools.png" height="500">
+</p>
 
 ## Plugin tools
 
-<TODO: Tool explanations>
+"Jump to Frame": Jumps the animation timeline to the specified frame and loads all the contacts (if any in that frame). Note that you must enter a different frame number than the value already in the window for anything to happen.
+
+"Keyframe Range": Starting (first window) and ending (second window) keyframes to perform operations over for all buttons below this line.
+
+"Transfer Contacts in Frame" Button: Performs a transfer of all source hand contacts to the target hand in the current frame and renders the result.
+
+"Transfer Contacts in Range" Button: Performs a transfer of all source hand contacts to the target hand in across all keyframes in range.
+
+"Dump Parameterized Distances to File" Button: Compute the geodesic distances of all target hand contacts to their computed landmarks across all keyframes in range and dump the results to the file specified <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/blob/main/src/contactTransferEditContext/contactTransferEditContext.hpp#L54">here</a>. If no absolute path is given, the file is created in the home directory.
+
+"Filter Distance": Sets the geodesic distance threshold from each contact point's affiliate landmark. Any contact points further away than this threshold will not be rendered.
+
+"Commit Filter" Button: Computes the geodesic distances of all contact points from their affiliate landmark across all keyframes in range and stores the result in the scene outliner. When contacts are exported using the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactSequenceIO">contactSequenceIO</a> plugin, filtered contacts will be noted under a JSON key called "OmissionIndices". These indices are used by the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/fusedMotionEditContext">fusedMotionEditContext</a> to determine which corresponding hand-object contact points to purge. Note, however, that commits to the scene outliner are "soft" - you can always set a new filter distance and re-compute the contact omissions. 
 
 ## General workflow
 

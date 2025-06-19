@@ -15,7 +15,7 @@ global proc contactTransferEditContextProperties()
                 intFieldGrp -label "Jump to Frame" -numberOfFields 1
                     -value1 0 -enable1 true FrameJumpField;
 
-                intFieldGrp -label "Keyframe Start, End" -numberOfFields 2
+                intFieldGrp -label "Keyframe Range" -numberOfFields 2
                     -value1 1 -enable1 true -value2 1 -enable2 true FrameRangeField;
 
                 button -label "Transfer Contacts in Frame" TransferContactsButton;

@@ -60,7 +60,7 @@ If successfull, you should see the following Tool Editor menu:
 
 "Wipe Rig Keyframes in Range" Button: Deletes all hand pose keyframes in range.
 
-"Finalize Omission Indices" Button: When contacts are imported for the particular target hand, "commits" ommitted points that were filtered by geodesic distance by wiping both hand and corresponding object contact points. Only needs to be run once.
+"Finalize Omission Indices" Button (IMPORTANT): When contacts are imported for the particular target hand, "commits" ommitted points that were filtered by geodesic distance by wiping both hand and corresponding object contact points. Only needs to be run once.
 
 "Opt: Distance Weight": Adjusts the value of $\lambda$<sub>cd</sub> in Eq (5) of the paper.
 

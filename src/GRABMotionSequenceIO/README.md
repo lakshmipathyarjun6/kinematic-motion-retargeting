@@ -49,7 +49,7 @@ Create a new Maya scene, then import the MANO, object, and table OBJ meshes. Ren
 
 Change the framerate to 120 fps, and set the timeline to the frame range of the motion.
 
-If the plugin is already loaded, you are ready to import the motion. Open the import menu and change the filetype to npz. After completion, re-center the camera to the scene (hotkey: f). The scene should look like the following:
+If the plugin is already loaded, you are ready to import the motion. Open the "Import" under File and change the filetype to "npz". After completion, re-center the camera to the scene (hotkey: f). The scene should look like the following:
 
 <p align="center">
 <img src="../../images/GRABImportComplete.png" height="500">

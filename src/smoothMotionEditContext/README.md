@@ -56,4 +56,4 @@ If successfull, you should see the following Tool Editor menu:
 
 3. Your final retarted result is complete! Enjoy!
 
-[TODO: Exports??]
+(Optional) If you want to export hand joint angles out of Maya, you can do so using the [TODO: plugin]

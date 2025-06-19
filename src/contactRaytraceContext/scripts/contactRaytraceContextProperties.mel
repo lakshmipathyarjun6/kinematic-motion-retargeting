@@ -17,7 +17,7 @@ global proc contactRaytraceContextProperties()
 
                 button -label "Raytrace Contacts" RaytraceContactsButton;
 
-                intFieldGrp -label "Keyframe Start, End, Inc." -numberOfFields 3
+                intFieldGrp -label "Keyframe Range" -numberOfFields 2
                     -value1 1 -enable1 true -value2 1 -enable2 true FrameRangeField;
 
                 button -label "Raytrace All Keyframes in Range" RaytraceContactsBulkButton;

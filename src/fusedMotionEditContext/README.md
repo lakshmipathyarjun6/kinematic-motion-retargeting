@@ -40,11 +40,59 @@ setToolTo fmec
 
 If successfull, you should see the following Tool Editor menu:
 
-<TODO: TW Image>
+If successfull, you should see the following Tool Editor menu:
+
+<p align="center">
+<img src="../../images/FusedMotionTools.png" height="500">
+</p>
 
 ## Plugin tools
 
-<TODO: Tool explanations>
+"Jump to Frame": Jumps the animation timeline to the specified frame and loads all the contacts (if any in that frame). Note that you must enter a different frame number than the value already in the window for anything to happen.
+
+"Keyframe Range": Starting (first window) and ending (second window) keyframes to perform operations over for all buttons below this line.
+
+"Save Keys Only" Checkbox: If selected, do not perform optimization on any of the keyframes in range and just store the existing (or interpolated) solution.
+
+"Enter / Return" Keyboard Key: Compute the optimal hand configuration for the current keyframe. Does NOT save the result.
+
+"Save Current Rig Keyframe" Button: Store the current hand configuration as a keyframe at the current frame in the animation timeline.
+
+"Compute Keyframes in Range" Button: Computes optimal hand poses for all keyframes in range and stores the results in the animation timeline.
+
+"Wipe Rig Keyframes in Range" Button: Deletes all hand pose keyframes in range.
+
+"Finalize Omission Indices" Button: When contacts are imported for the particular target hand, "commits" ommitted points that were filtered by geodesic distance by wiping both hand and corresponding object contact points. Only needs to be run once.
+
+"Opt: Distance Weight": Adjusts the value of $\lambda$<sub>cd</sub> in Eq (5) of the paper.
+
+"Opt: Normal Weight": Adjusts the value of $\lambda$<sub>cn</sub> in Eq (5) of the paper.
+
+"Opt: Marker Weight": Adjusts the value of $\lambda$<sub>m</sub> in Eq (3) of the paper.
+
+"Opt: Contact Weight": Adjusts the value of $\lambda$<sub>c</sub> in Eq (3) of the paper.
+
+"Opt: Intersection Weight": Adjusts the value of $\lambda$<sub>t</sub> in Eq (3) of the paper.
+
+"Opt: Prior Weight": Adjusts the value of $\lambda$<sub>j</sub> in Eq (3) of the paper.
+
+"Opt: # Iterations": Adjusts the total number optimization iterations.
+
+"Visuzlize Progress" Checkbox: If selected, render intermediate states of the hand pose optimization process while in progress.
+
+"Reset Non-Root Joints" Button: Debugging utility that sets the zeros-out the configuration of all joints of the hand rig except the root.
+
+"Undo Optimization" Button: Debugging utility that resets the hand pose to its state before the last optimization call.
+
+"Accel. Epsilon": Adjusts the value of $\Epsilon$<sub>acc</sub> in Section 3.4.3 of the paper.
+
+"Max Iterations": Adjusts the maximum cap of acceleration refinement passes as described in Section 3.4.3 of the paper.
+
+"Compute Acceleration Errors" Button: Computes the acceleration values for all hand joints within the keyframe range and renders the result as a new "plot" scene element, where the blue lines indicate the acceleration values and the red line indicates $\Epsilon$<sub>acc</sub>.
+
+"Resolve Threshold Error Frames" Button: Performs the acceleration refinement smoothing over the keyframe range using the parameters specified above.
+
+"Store Error Frames" Button (IMPORTANT): Computes all of the DOFs which violate $\Epsilon$<sub>acc</sub> per keyframe over the keyframe range and stores the result as a scene outliner element. You should ALWAYS hit this button at the end of the acceleration refinement stage, even if there are no outstanding violations, as it will be queried by the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/smoothMotionEditContext">smoothMotionEditContext</a> plugin to determine which keyframes per DOF to ignore during the B-Spline fitting process.
 
 ## General workflow
 

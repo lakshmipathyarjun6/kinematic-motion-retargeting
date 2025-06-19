@@ -56,4 +56,4 @@ If successfull, you should see the following Tool Editor menu:
 
 3. Your final retarted result is complete! Enjoy!
 
-(Optional) If you want to export hand joint angles out of Maya, you can do so using the [TODO: plugin]
+(Optional) If you want to export hand joint angles out of Maya, you can do so using the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/keyframeMotionSequenceIO">keyframeMotionSequenceIO</a> plugin.

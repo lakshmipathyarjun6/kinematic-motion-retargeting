@@ -50,9 +50,9 @@ If successfull, you should see the following Tool Editor menu:
 
 ## General workflow
 
-1. Compute fitted B-Splines for all hand DOFs across all frames
+1. Compute fitted B-Splines for all hand DOFs across all frames.
 
-2. Select the generated splines in the scene outline, then hit (TODO: specifics) in the tool plugin window to load the spline data into the actual hand DOFs and store the resulting keyframes
+2. Select the generated splines in the scene outline, then hit the "Load Splines" button in the tool plugin window.
 
 3. Your final retarted result is complete! Enjoy!
 

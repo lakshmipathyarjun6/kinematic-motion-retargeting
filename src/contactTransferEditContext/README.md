@@ -54,15 +54,15 @@ If successfull, you should see the following Tool Editor menu:
 
 ## General workflow
 
-1. If you skipped the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactAxisCalibrationContext">contactAxisCalibrationContext</a> plugin, import the source hand contacts for the motion you wish to retarget via the <TODO: contactexport> plugin
+1. If you skipped the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactAxisCalibrationContext">contactAxisCalibrationContext</a> plugin, import the source hand contacts for the motion you wish to retarget via the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactSequenceIO">contactSequenceIO</a> plugin.
 
-2. Retarget contacts for all frames
+2. Retarget contacts for all frames.
 
-3. Scan a few frames in the result to check for quality
+3. Scan a few frames in the result to check for quality.
 
-4. If there are contacts to ignore (e.g. target hand has fewer fingers), set the distance threshold and <TODO: fill in>
+4. If there are contacts to ignore (e.g. target hand has fewer fingers), set the "Filter Distance" threshold, check a few frames to make sure that the undesired contacts are filtered out, and then run the "Commit Filter" button across all keyframes.
 
-5. Export the target hand contacts via the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactSequenceIO">contactSequenceIO</a> plugin
+5. Export the target hand contacts via the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactSequenceIO">contactSequenceIO</a> plugin.
 
 WARNING: This process will take some time, especially if there are a lot of contacts to retarget. It can take anywhere from from a few minutes to overnight to run.
 

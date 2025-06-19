@@ -95,7 +95,9 @@ Once Maya starts up, either in a new or existing scene, navigate to Windows >> S
 
 If you set your Maya.env file to point to your build folder, all the plugins should be visible:
 
-<TODO: Plugin visibility>
+<p align="center">
+<img src="images/PluginLoadingMenu.png">
+</p>
 
 Select "Auto load" as well as "Loaded" on all the plugins. Make sure there are no errors, then save the current scene (you can delete it afterward) and restart Maya. The plugins should now automatically be loaded whenever Maya is started.
 
@@ -113,7 +115,9 @@ The plugins in this repository need to be activated directly via MEL commands en
 
 Edit context plugins can also (optionally) be given a customized toolkit that will be setup and torn down when the plugin is activated and de-activatd. This toolkit will replace the data in the Tool Editor window. Each plugin README will explain how to use its toolkit. The locations of both these windows are shown below:
 
-<TODO: Tool windows>
+<p align="center">
+<img src="images/ViewingWindow.png">
+</p>
 
 ## Processing New Hands and Motion Data
 

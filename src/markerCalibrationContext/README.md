@@ -15,9 +15,7 @@ Run the following MEL command to activate the plugin:
 setToolTo mcc
 ```
 
-If successfull, you should see the following Tool Editor menu:
-
-<TODO: TW Image>
+If successfull, you should see the paired markers rendered in the viewport.
 
 ## General workflow
 

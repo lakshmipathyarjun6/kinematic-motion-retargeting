@@ -121,7 +121,7 @@ Edit context plugins can also (optionally) be given a customized toolkit that wi
 
 ## Processing New Hands and Motion Data
 
-The general "flow of primary plugins" to use when preparing a new hand for retargeting is:
+The general "flow of plugins" to use when preparing a new hand for retargeting is:
 
 <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/markerCalibrationContext">markerCalibrationContext</a> -> <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactAxisCalibrationContext">contactAxisCalibrationContext</a>
 

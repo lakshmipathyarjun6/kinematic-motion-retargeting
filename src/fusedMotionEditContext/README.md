@@ -84,15 +84,15 @@ If successfull, you should see the following Tool Editor menu:
 
 "Undo Optimization" Button: Debugging utility that resets the hand pose to its state before the last optimization call.
 
-"Accel. Epsilon": Adjusts the value of $\Epsilon$<sub>acc</sub> in Section 3.4.3 of the paper.
+"Accel. Epsilon": Adjusts the value of $\epsilon$<sub>acc</sub> in Section 3.4.3 of the paper.
 
 "Max Iterations": Adjusts the maximum cap of acceleration refinement passes as described in Section 3.4.3 of the paper.
 
-"Compute Acceleration Errors" Button: Computes the acceleration values for all hand joints within the keyframe range and renders the result as a new "plot" scene element, where the blue lines indicate the acceleration values and the red line indicates $\Epsilon$<sub>acc</sub>.
+"Compute Acceleration Errors" Button: Computes the acceleration values for all hand joints within the keyframe range and renders the result as a new "plot" scene element, where the blue lines indicate the acceleration values and the red line indicates $\epsilon$<sub>acc</sub>.
 
 "Resolve Threshold Error Frames" Button: Performs the acceleration refinement smoothing over the keyframe range using the parameters specified above.
 
-"Store Error Frames" Button (IMPORTANT): Computes all of the DOFs which violate $\Epsilon$<sub>acc</sub> per keyframe over the keyframe range and stores the result as a scene outliner element. You should ALWAYS hit this button at the end of the acceleration refinement stage, even if there are no outstanding violations, as it will be queried by the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/smoothMotionEditContext">smoothMotionEditContext</a> plugin to determine which keyframes per DOF to ignore during the B-Spline fitting process.
+"Store Error Frames" Button (IMPORTANT): Computes all of the DOFs which violate $\epsilon$<sub>acc</sub> per keyframe over the keyframe range and stores the result as a scene outliner element. You should ALWAYS hit this button at the end of the acceleration refinement stage, even if there are no outstanding violations, as it will be queried by the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/smoothMotionEditContext">smoothMotionEditContext</a> plugin to determine which keyframes per DOF to ignore during the B-Spline fitting process.
 
 ## General workflow
 

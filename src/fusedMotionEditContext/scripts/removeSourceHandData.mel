@@ -1,0 +1,9 @@
+global proc rhd()
+{
+    select -r -ne "contacts_handShape*";
+    delete;
+    select -r -ne "hand*";
+    delete;
+    select -r -ne "wrist";
+    delete;
+}

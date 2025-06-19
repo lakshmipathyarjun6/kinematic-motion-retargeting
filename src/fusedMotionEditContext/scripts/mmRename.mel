@@ -1,0 +1,68 @@
+global proc rmm( string $desiredName )
+{
+    string $replacementNamePinkyTip = "mm" + $desiredName + "ShapePinkyTip";
+    string $replacementNamePinkyMiddle = "mm" + $desiredName + "ShapePinkyMiddle";
+    string $replacementNamePinkyBase = "mm" + $desiredName + "ShapePinkyBase";
+
+    string $replacementNameRingTip = "mm" + $desiredName + "ShapeRingTip";
+    string $replacementNameRingMiddle = "mm" + $desiredName + "ShapeRingMiddle";
+    string $replacementNameRingBase = "mm" + $desiredName + "ShapeRingBase";
+
+    string $replacementNameMiddleTip = "mm" + $desiredName + "ShapeMiddleTip";
+    string $replacementNameMiddleMiddle = "mm" + $desiredName + "ShapeMiddleMiddle";
+    string $replacementNameMiddleBase = "mm" + $desiredName + "ShapeMiddleBase";
+
+    string $replacementNameIndexTip = "mm" + $desiredName + "ShapeIndexTip";
+    string $replacementNameIndexMiddle = "mm" + $desiredName + "ShapeIndexMiddle";
+    string $replacementNameIndexBase = "mm" + $desiredName + "ShapeIndexBase";
+
+    string $replacementNameThumbTip = "mm" + $desiredName + "ShapeThumbTip";
+    string $replacementNameThumbMiddle = "mm" + $desiredName + "ShapeThumbMiddle";
+    string $replacementNameThumbBase = "mm" + $desiredName + "ShapeThumbBase";
+
+    string $replacementNameBackRing = "mm" + $desiredName + "ShapeBackRing";
+    string $replacementNameBackIndex = "mm" + $desiredName + "ShapeBackIndex";
+
+    string $replacementNameWristRight = "mm" + $desiredName + "ShapeWristRight";
+    string $replacementNameWristLeft = "mm" + $desiredName + "ShapeWristLeft";
+
+    string $replacementNamePinkyFingertip = "mm" + $desiredName + "ShapePinkyFingertip";
+    string $replacementNameRingFingertip = "mm" + $desiredName + "ShapeRingFingertip";
+    string $replacementNameMiddleFingertip = "mm" + $desiredName + "ShapeMiddleFingertip";
+    string $replacementNameIndexFingertip = "mm" + $desiredName + "ShapeIndexFingertip";
+    string $replacementNameThumbFingertip = "mm" + $desiredName + "ShapeThumbFingertip";
+    string $replacementNamePalmRoot = "mm" + $desiredName + "ShapePalmRoot";
+
+    rename "mmhandShapePinkyTip" $replacementNamePinkyTip;
+    rename "mmhandShapePinkyMiddle" $replacementNamePinkyMiddle;
+    rename "mmhandShapePinkyBase" $replacementNamePinkyBase;
+
+    rename "mmhandShapeRingTip" $replacementNameRingTip;
+    rename "mmhandShapeRingMiddle" $replacementNameRingMiddle;
+    rename "mmhandShapeRingBase" $replacementNameRingBase;
+
+    rename "mmhandShapeMiddleTip" $replacementNameMiddleTip;
+    rename "mmhandShapeMiddleMiddle" $replacementNameMiddleMiddle;
+    rename "mmhandShapeMiddleBase" $replacementNameMiddleBase;
+
+    rename "mmhandShapeIndexTip" $replacementNameIndexTip;
+    rename "mmhandShapeIndexMiddle" $replacementNameIndexMiddle;
+    rename "mmhandShapeIndexBase" $replacementNameIndexBase;
+
+    rename "mmhandShapeThumbTip" $replacementNameThumbTip;
+    rename "mmhandShapeThumbMiddle" $replacementNameThumbMiddle;
+    rename "mmhandShapeThumbBase" $replacementNameThumbBase;
+
+    rename "mmhandShapeBackRing" $replacementNameBackRing;
+    rename "mmhandShapeBackIndex" $replacementNameBackIndex;
+
+    rename "mmhandShapeWristRight" $replacementNameWristRight;
+    rename "mmhandShapeWristLeft" $replacementNameWristLeft;
+
+    rename "mmhandShapePinkyFingertip" $replacementNamePinkyFingertip;
+    rename "mmhandShapeRingFingertip" $replacementNameRingFingertip;
+    rename "mmhandShapeMiddleFingertip" $replacementNameMiddleFingertip;
+    rename "mmhandShapeIndexFingertip" $replacementNameIndexFingertip;
+    rename "mmhandShapeThumbFingertip" $replacementNameThumbFingertip;
+    rename "mmhandShapePalmRoot" $replacementNamePalmRoot;
+}

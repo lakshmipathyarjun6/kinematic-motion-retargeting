@@ -1,0 +1,25 @@
+ global proc rmp()
+ {
+  	string $pasted[] = `ls "pasted__*"`;
+  	string $object;
+  	for ( $object in $pasted )
+  	{
+  		string $elements[];
+  		// The values returned by ls may be full or partial dag
+  		// paths - when renaming we only want the actual
+  		// object name so strip off the leading dag path.
+  		//
+  		tokenize( $object, "|", $elements );
+  		string $stripped = $elements[ `size $elements` - 1 ];
+  
+  		// Remove the 'pasted__' suffix from the name
+  		//
+  		$stripped = `substitute "pasted__" $stripped ""`;
+  
+  		// When renaming a transform its shape will automatically be
+  		// be renamed as well. Use catchQuiet here to ignore errors
+  		// when trying to rename the child shape a second time.
+  		// 
+  		catchQuiet(`evalEcho("rename " + $object + " " + $stripped)`);
+  	}
+}

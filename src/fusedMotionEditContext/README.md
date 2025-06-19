@@ -8,9 +8,11 @@ WARNING: There are significantly more steps for this plugin than the others. Sin
 
 As a starting point, it assumes you have:
 
-1. A Maya scene with paired original hand and object contacts computed using the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactRaytraceContext">contactRaytraceContext</a> plugin. 
+1. A Maya scene with paired original hand and object contacts computed using the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactRaytraceContext">contactRaytraceContext</a> plugin.
 
-2. Contact data for the target hand in a JSON file exported from the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a> plugin using the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactSequenceIO">contactSequenceIO</a> plugin.
+2. Your target hand asset that has already been fully rigged and skinned.
+
+3. Contact data for the target hand in a JSON file exported from the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactTransferEditContext">contactTransferEditContext</a> plugin using the <a href="https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting/tree/main/src/contactSequenceIO">contactSequenceIO</a> plugin.
 
 Next, copy the MEL files under the /scripts subdirectory to the following location:
 

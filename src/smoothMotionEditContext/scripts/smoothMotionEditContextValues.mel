@@ -3,11 +3,6 @@ global proc smoothMotionEditContextValues( string $toolName )
     string $parent = (`toolPropertyWindow -q -location`);
     setParent $parent;
 
-    checkBoxGrp -e
-        -offCommand ("updateObjectFitSelection " + $toolName + " " + 0)
-        -onCommand ("updateObjectFitSelection " + $toolName + " " + 1)
-        FitObjectBox;
-
     button -e
         -command ("fitSplines " + $toolName)
         FitSplinesButton;
@@ -21,11 +16,6 @@ global proc smoothMotionEditContextValues( string $toolName )
         LoadSplinesButton;
 
     toolPropertySelect "smoothMotionEditContext";
-}
-
-global proc updateObjectFitSelection( string $toolName, int $enable )
-{
-    smoothMotionEditContext -e -objectfitenabled $enable $toolName;
 }
 
 global proc fitSplines( string $toolName )

@@ -23,10 +23,6 @@ MStatus SmoothMotionEditContextCommand::appendSyntax()
     MStatus status;
     MSyntax mSyntax = syntax();
 
-    status = mSyntax.addFlag(OBJECT_FIT_ENABLED_FLAG,
-                             OBJECT_FIT_ENABLED_FLAG_LONG, MSyntax::kBoolean);
-    CHECK_MSTATUS_AND_RETURN_IT(status);
-
     status = mSyntax.addFlag(FIT_SPLINES_FLAG, FIT_SPLINES_FLAG_LONG,
                              MSyntax::kUnsigned, MSyntax::kUnsigned,
                              MSyntax::kUnsigned);
@@ -46,16 +42,6 @@ MStatus SmoothMotionEditContextCommand::doEditFlags()
 {
     MStatus status;
     MArgParser argData = parser();
-
-    if (argData.isFlagSet(OBJECT_FIT_ENABLED_FLAG))
-    {
-        bool enable =
-            argData.flagArgumentBool(OBJECT_FIT_ENABLED_FLAG, 0, &status);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        status = m_pContext->enableObjectFit(enable);
-        CHECK_MSTATUS_AND_RETURN_IT(status);
-    }
 
     if (argData.isFlagSet(FIT_SPLINES_FLAG))
     {

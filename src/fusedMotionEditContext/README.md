@@ -40,8 +40,6 @@ setToolTo fmec
 
 If successfull, you should see the following Tool Editor menu:
 
-If successfull, you should see the following Tool Editor menu:
-
 <p align="center">
 <img src="../../images/FusedMotionTools.png" height="500">
 </p>

@@ -7,9 +7,6 @@
 
 // Spline Creation flags
 
-#define OBJECT_FIT_ENABLED_FLAG "-ofe"
-#define OBJECT_FIT_ENABLED_FLAG_LONG "-objectfitenabled"
-
 #define FIT_SPLINES_FLAG "-fs"
 #define FIT_SPLINES_FLAG_LONG "-fitsplines"
 

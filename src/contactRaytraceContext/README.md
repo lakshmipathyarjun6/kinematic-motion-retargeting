@@ -20,7 +20,7 @@ cp path/to/project/kinematic-motion-retargeting/src/contactRaytraceContext/scrip
 
 Windows:
 ```
-TODO
+copy path\to\project\kinematic-motion-retargeting\src\contactRaytraceContext\scripts\* %HOMEPATH%\Documents\maya\2024\scripts
 ```
 
 ## Plugin activation

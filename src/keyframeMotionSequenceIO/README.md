@@ -10,6 +10,7 @@ This utility I/O plugin can be used to export joint angles out of Maya. Joint an
 
 3. Hit the export button. If export was successful, a fully populated JSON file (but using the kmexp extension) should be generated at the filepath specified. Exports follow the schema below:
 
+```
 {
     "framerate": 120 (all GRAB exports are at 120 fps),
     "jointNames": [
@@ -62,5 +63,6 @@ This utility I/O plugin can be used to export joint angles out of Maya. Joint an
         ...
    ]
 }
+```
 
 The root dof will always have 7 DOF values, with the first 4 elements being the orientation expressed as a quaternion in wxyz order and the second 3 being the translation. I realize it's not quite accurate to declare the quaternion values all as DOFs, but it is sufficient for parsing purposes and certainly better than Euler angles. Joint angles values are all in radians, and translation and scale values are in centimeters (assuming Maya default units were not changed).

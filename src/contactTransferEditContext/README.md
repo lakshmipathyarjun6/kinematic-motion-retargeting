@@ -20,7 +20,7 @@ cp path/to/project/kinematic-motion-retargeting/src/contactTransferEditContext/s
 
 Windows:
 ```
-TODO
+copy path\to\project\kinematic-motion-retargeting\src\contactTransferEditContext\scripts\* %HOMEPATH%\Documents\maya\2024\scripts
 ```
 
 ## Plugin activation

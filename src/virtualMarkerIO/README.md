@@ -9,3 +9,5 @@ This utility I/O plugin can be used to import and export virtual markers from on
 2. Open the "Import" or "Export Selection" menu under File and change the filetype to "virtualmarkers".
 
 3. Hit the import / export button. If import was successful, virtual markers should show up as new entities in the scene outliner. If export was successful, a fully populated JSON file (but using the virtualmarkers extension) should be generated at the filepath specified.
+
+NOTE: Virtual markers for all of our target hands and motions can be downloaded from <a href="https://drive.google.com/drive/folders/1ET-Ld6xnelF0nAEiggetz8qrTqgNwCUn">here</a>.

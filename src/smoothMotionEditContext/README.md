@@ -20,7 +20,7 @@ cp path/to/project/kinematic-motion-retargeting/src/smoothMotionEditContext/scri
 
 Windows:
 ```
-TODO
+copy path\to\project\kinematic-motion-retargeting\src\smoothMotionEditContext\scripts\* %HOMEPATH%\Documents\maya\2024\scripts
 ```
 
 ## Plugin activation

@@ -24,7 +24,7 @@ cp path/to/project/kinematic-motion-retargeting/src/contactAxisCalibrationContex
 
 Windows:
 ```
-TODO
+copy path\to\project\kinematic-motion-retargeting\src\contactAxisCalibrationContext\scripts\* %HOMEPATH%\Documents\maya\2024\scripts
 ```
 
 ## Plugin activation

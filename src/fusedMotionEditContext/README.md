@@ -30,7 +30,7 @@ cp path/to/project/kinematic-motion-retargeting/src/fusedMotionEditContext/scrip
 
 Windows:
 ```
-TODO
+copy path\to\project\kinematic-motion-retargeting\src\fusedMotionEditContext\scripts\* %HOMEPATH%\Documents\maya\2024\scripts
 ```
 
 If you have the previous two items ready to go and have copied the scripts over, the [TODO: video] will guide you through the remainder of the process.

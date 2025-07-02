@@ -33,7 +33,7 @@ Windows:
 copy path\to\project\kinematic-motion-retargeting\src\fusedMotionEditContext\scripts\* %HOMEPATH%\Documents\maya\2024\scripts
 ```
 
-If you have the previous two items ready to go and have copied the scripts over, the [TODO: video] will guide you through the remainder of the process.
+If you have the previous two items ready to go and have copied the scripts over, the <a href="https://www.youtube.com/watch?v=_J30HGlAOyc">tutorial video</a> will guide you through the remainder of the process.
 
 ## Plugin activation
 

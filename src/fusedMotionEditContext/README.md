@@ -4,7 +4,7 @@ This Edit Context plugin can be thought of as the "main" plugin which actually p
 
 ## Setup
 
-WARNING: There are significantly more steps for this plugin than the others. Since there is a lot to write out in text, I have made a [TODO: video] explaining how to set up and use the plugin.
+WARNING: There are significantly more steps for this plugin than the others. Since there is a lot to write out in text, I have made a <a href="https://www.youtube.com/watch?v=_J30HGlAOyc">tutorial video</a> explaining how to set up and use the plugin.
 
 As a starting point, it assumes you have:
 
@@ -98,7 +98,7 @@ If successfull, you should see the following Tool Editor menu:
 
 ## General workflow
 
-Please see the [TODO: video] for detailed steps. But as a rough guideline:
+Please see the <a href="https://www.youtube.com/watch?v=_J30HGlAOyc">tutorial video</a> for detailed steps. But as a rough guideline:
 
 1. Compute the trajectory using only root degrees of freedom (DOFs).
 

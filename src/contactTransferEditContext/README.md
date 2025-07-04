@@ -23,6 +23,8 @@ Windows:
 copy path\to\project\kinematic-motion-retargeting\src\contactTransferEditContext\scripts\* %HOMEPATH%\Documents\maya\2024\scripts
 ```
 
+Then restart Maya once the scripts have been copied over.
+
 ## Plugin activation
 
 Run the following MEL command to activate the plugin:

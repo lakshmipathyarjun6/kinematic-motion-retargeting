@@ -41,14 +41,11 @@
 #define SPLINE_DIMENSION 2
 
 #define OBJECT_NAME MString("object")
-#define NUM_OBJECT_DOFS 6
 
 #define CONTACT_POINTS_ATTRIBUTE MString("ContactPoints")
 #define MARKER_POINTS_ATTRIBUTE MString("MarkerPoints")
-#define PAIRED_CONTACTS_ATTRIBUTE MString("PairedContactNames")
 #define ACCELERATION_ERROR_STORAGE_ATTRIBUTE                                   \
     MString("AccelerationViolationIndices")
-#define SPLINE_KNOTS_ATTRIBUTE MString("Knots")
 #define SPLINE_RANGE_END MString("ControlSplineRangeEnd")
 #define SPLINE_RANGE_START MString("ControlSplineRangeStart")
 
@@ -67,7 +64,6 @@
 
 #define SPLINE_DOF_PREFIX MString("degreeOfFreedom")
 #define DEFAULT_HAND_DOF_SPLINE_STORAGE_GROUP MString("dofSplines")
-#define DEFAULT_OBJECT_SPLINE_STORAGE_GROUP MString("objectSplines")
 
 #define CONTACT_PAIRING_LINES_GROUP MString("cplines")
 #define MARKER_PAIRING_LINES_GROUP MString("mplines")

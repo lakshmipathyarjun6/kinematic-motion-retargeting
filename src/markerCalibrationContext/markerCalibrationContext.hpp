@@ -40,7 +40,6 @@
 #define TARGET_MARKER_PATCH_SHADER_SUFFIX MString("Shader")
 #define TARGET_MARKER_SPHERE_NAME MString("markerSphere")
 
-#define CONTROL_SPHERE_SIZE 0.3f // Size of the control sphere
 #define DEFAULT_SPHERE_SIZE 0.1f // Size of the spheres that form a patch
 
 #define MARKER_PAIRING_LINES_PREFIX MString("mplines")

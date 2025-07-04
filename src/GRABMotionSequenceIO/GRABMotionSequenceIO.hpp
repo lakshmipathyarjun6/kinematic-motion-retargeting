@@ -39,7 +39,6 @@
 
 #define CONTACT_POINTS_ATTRIBUTE MString("ContactPoints")
 
-#define CONTACT_BASE_PREFIX MString("contact_")
 #define CONTACT_GROUP_PREFIX MString("contacts_")
 
 #define XYZ_BLOCK_SIZE 3

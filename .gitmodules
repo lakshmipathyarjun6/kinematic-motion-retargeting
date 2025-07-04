@@ -4,9 +4,6 @@
 [submodule "deps/geometry-central"]
 	path = deps/geometry-central
 	url = https://github.com/lakshmipathyarjun6/geometry-central
-[submodule "deps/fcpw"]
-	path = deps/fcpw
-	url = https://github.com/lakshmipathyarjun6/fcpw
 [submodule "deps/rapidjson"]
 	path = deps/rapidjson
 	url = https://github.com/lakshmipathyarjun6/rapidjson.git

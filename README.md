@@ -74,7 +74,7 @@ cd %HOMEPATH%\Documents\maya\2024\
 And add the following line to the Maya.env file in that location:
 
 ```
-MAYA_PLUG_IN_PATH=/path/to/project/kinematic_motion_retargeting/build
+MAYA_PLUG_IN_PATH=/path/to/project/kinematic-motion-retargeting/build
 ```
 
 This line will instruct Maya to automatically make all plugins in the build folder visible on startup.

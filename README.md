@@ -28,7 +28,7 @@ Next, install <a href="https://eigen.tuxfamily.org/dox/">Eigen</a> and <a href="
 Next, clone this repository *recursively* to make sure all dependency submodules are fetched:
 
 ```
-git clone --recursive https://github.com/lakshmipathyarjun6/kinematic_motion_retargeting.git
+git clone --recursive https://github.com/lakshmipathyarjun6/kinematic-motion-retargeting.git
 cd kinematic_motion_retargeting/
 ```
 

@@ -1,7 +1,7 @@
 <p align="center">
 <img src="images/KinematicMotionRetargetingTOG25.jpg" height="200">
 </p>
-<h1 align="center"><em>Kinematic Motion Retargeting for Contact-Rich Anthropomorphic Manipulations </em></h1>
+<h1 align="center"><em>Kinematic Motion Retargeting for Contact-Rich Anthropomorphic Manipulations</em></h1>
 
 Code for <a href="https://dl.acm.org/doi/10.1145/3723872">paper</a>
 

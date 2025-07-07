@@ -46,73 +46,57 @@ INCLUDE_DIRECTORIES(${_MAYA_LOCATION}/${MAYA_INC_SUFFIX} ${OPENGL_INCLUDE_DIRS} 
 LINK_DIRECTORIES(${_MAYA_LOCATION}/${MAYA_LIB_SUFFIX})
 
 SET(CONTACT_RAYTRACE_CONTEXT_FILES
-    "src/contactRaytraceContext/contactRaytraceContext.hpp"
     "src/contactRaytraceContext/contactRaytraceContext.cpp"
-    "src/contactRaytraceContext/contactRaytraceContextCommand.hpp"
     "src/contactRaytraceContext/contactRaytraceContextCommand.cpp"
     "src/contactRaytraceContext/contactRaytracerMain.cpp"
 )
 
 SET(CONTACT_SEQUENCE_IO_FILES
     ${JSON}
-    "src/contactSequenceIO/contactSequenceIO.hpp"
     "src/contactSequenceIO/contactSequenceIO.cpp"
     "src/contactSequenceIO/contactSequenceIOMain.cpp"
 )
 
 SET(CONTACT_TRANSFER_EDIT_CONTEXT_FILES
-    "src/contactTransferEditContext/contactTransferEditContext.hpp"
     "src/contactTransferEditContext/contactTransferEditContext.cpp"
-    "src/contactTransferEditContext/contactTransferEditContextCommand.hpp"
     "src/contactTransferEditContext/contactTransferEditContextCommand.cpp"
     "src/contactTransferEditContext/contactTransferEditorMain.cpp"
-    "src/contactTransferEditContext/geometryProcessingContext.hpp"
     "src/contactTransferEditContext/geometryProcessingContext.cpp"
 )
 
 SET(FUSED_MOTION_EDIT_CONTEXT_FILES
-    "src/fusedMotionEditContext/fusedMotionEditContext.hpp"
     "src/fusedMotionEditContext/fusedMotionEditContext.cpp"
-    "src/fusedMotionEditContext/fusedMotionEditContextCommand.hpp"
     "src/fusedMotionEditContext/fusedMotionEditContextCommand.cpp"
     "src/fusedMotionEditContext/fusedMotionEditorMain.cpp"
 )
 
 SET(GRAB_MOTION_SEQUENCE_IO_FILES
-    "src/GRABMotionSequenceIO/cnpy.h"
     "src/GRABMotionSequenceIO/cnpy.cpp"
-    "src/GRABMotionSequenceIO/GRABMotionSequenceIO.hpp"
     "src/GRABMotionSequenceIO/GRABMotionSequenceIO.cpp"
     "src/GRABMotionSequenceIO/GRABMotionSequenceIOMain.cpp"
 )
 
 SET(KEYFRAME_MOTION_SEQUENCE_IO_FILES
     ${JSON}
-    "src/keyframeMotionSequenceIO/keyframeMotionSequenceIO.hpp"
     "src/keyframeMotionSequenceIO/keyframeMotionSequenceIO.cpp"
     "src/keyframeMotionSequenceIO/keyframeMotionSequenceIOMain.cpp"
 )
 
 SET(MARKER_CALIBRATION_CONTEXT_FILES
-    "src/markerCalibrationContext/markerCalibrationContext.hpp"
     "src/markerCalibrationContext/markerCalibrationContext.cpp"
-    "src/markerCalibrationContext/markerCalibrationContextCommand.hpp"
     "src/markerCalibrationContext/markerCalibrationContextCommand.cpp"
     "src/markerCalibrationContext/markerCalibratorMain.cpp"
 )
 
 SET(SMOOTH_MOTION_EDIT_CONTEXT_FILES
     ${BSPLINE}
-    "src/smoothMotionEditContext/smoothMotionEditContext.hpp"
     "src/smoothMotionEditContext/smoothMotionEditContext.cpp"
-    "src/smoothMotionEditContext/smoothMotionEditContextCommand.hpp"
     "src/smoothMotionEditContext/smoothMotionEditContextCommand.cpp"
     "src/smoothMotionEditContext/smoothMotionEditorMain.cpp"
 )
 
 SET(VIRTUAL_MARKER_IO_FILES
     ${JSON}
-    "src/virtualMarkerIO/virtualMarkerIO.hpp"
     "src/virtualMarkerIO/virtualMarkerIO.cpp"
     "src/virtualMarkerIO/virtualMarkerIOMain.cpp"
 )

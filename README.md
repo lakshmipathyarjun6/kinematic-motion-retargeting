@@ -3,7 +3,7 @@
 </p>
 <h1 align="center"><em>Kinematic Motion Retargeting for Contact-Rich Anthropomorphic Manipulations</em></h1>
 
-Code for <a href="https://dl.acm.org/doi/10.1145/3723872">paper</a>
+Code for <a href="https://dl.acm.org/doi/10.1145/3723872">paper</a>. Please also see our <a href="https://www.youtube.com/watch?v=KszH8-YJayQ">supplementary video</a> for rendered results and a brief method overview. Please see the included [TODO: license] for terms of use.
 
 ## Introduction
 

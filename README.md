@@ -13,6 +13,8 @@ For those who are only looking to download complete results for baseline compari
 
 You can also download our hands and other assets from <a href="https://drive.google.com/drive/folders/1yZNd8S02GbZjkFYTiGYOYGZ3CKxrzuxU">here</a>. Please see the README file in the drive folder for an overview of contents.
 
+NOTE: Google drive might complain about the Maya files being infected / containing viruses. I am not sure why it complains so much about Maya binary files. If this happens, you can make a copy of the binary file to your local Google Drive and download it from there.
+
 ## Why on earth are you using Maya instead of literally anything else (e.g. Blender, Open3d, \<insert favorite Python visualizer\>)?
 
 Because I had to familiarize myself with it during the development of <a href="https://dl.acm.org/doi/10.1145/3592117">this paper</a>. Yes, I realize Maya is closed source. Yes, I realize Maya is cumbersome to build on Linux distributions and has some problems. But it does have a rather nice UI and, more importantly, a well documented <a href="https://help.autodesk.com/view/MAYAUL/2024/ENU/?guid=MAYA_API_REF_cpp_ref_group_open_maya_html">C++ developer API</a>. As the sole developer of this work, I opted to use what was most useful and convenient for my research needs. However, I am more than happy to provide guidance if someone is interested in porting this code to Blender or a Python package. But I personally do not have the bandwidth to do so.

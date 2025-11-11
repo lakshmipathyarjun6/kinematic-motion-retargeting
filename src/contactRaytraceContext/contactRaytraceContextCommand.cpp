@@ -86,7 +86,7 @@ MStatus ContactRaytraceContextCommand::doEditFlags()
         CHECK_MSTATUS_AND_RETURN_IT(status);
 
         double cutoffDistance =
-            argData.flagArgumentDouble(PURGE_CONTACTS_FLAG, 3, &status);
+            argData.flagArgumentDouble(PURGE_CONTACTS_FLAG, 2, &status);
         CHECK_MSTATUS_AND_RETURN_IT(status);
 
         status = m_pContext->purgeContactsAboveCutoff(frameStart, frameEnd,

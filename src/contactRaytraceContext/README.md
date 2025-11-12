@@ -54,6 +54,8 @@ If successfull, you should see the following Tool Editor menu:
 
 "Purge Pairings Above Cutoff" Button: Filters out all paired contacts for all the keyframes in range whose L2 distance exceeds that specified by "Cutoff Distance". Results are automatically stored in the scene outliner.
 
+IMPORTANT NOTE: If you are using any of our existing hand or motion data, you will need to use the exact same cutoff distance or the number of contacts in the files <a href="https://drive.google.com/drive/folders/1cm4nhnLJvYs1p_sssrYCZD2yINgBIE_b">here</a> will not match the number stored for the objects. If this is your intention, please start with one of our existing cleaned up scenes <a href="https://drive.google.com/drive/folders/1NGDG5rFYws_YYT8uG8CtWyROlFjnbCCb">here</a>.
+
 ## General workflow
 
 1. Compute contacts for all data frames

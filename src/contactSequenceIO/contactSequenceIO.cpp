@@ -411,7 +411,15 @@ ContactSequenceIO::getOmissionIndicesAttribute(MString &contactGroupName,
 
     MPlug attributePlug(setObject, attrObj);
 
-    MObject attributeData = attributePlug.asMObject();
+    MObject attributeData = attributePlug.asMObject(&status);
+
+    // Will fail if no omission indices were found because MObject defaults to
+    // NULL Not really a bug -- just return and allow omissionIndices to stay
+    // empty
+    if (status == MS::kFailure)
+    {
+        return MS::kSuccess;
+    }
 
     MFnIntArrayData fnIntArrayData(attributeData, &status);
     CHECK_MSTATUS_AND_RETURN_IT(status);
